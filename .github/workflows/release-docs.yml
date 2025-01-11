@@ -10,6 +10,9 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 env:
     GITHUB_TOKEN: ${{ github.token }}
+    DOCS_ID: 'sizium'
+    DOCS_DIR: 'packages/docs/build/docs'
+    BUILD_CMD: 'pnpm build'
 
 ###############################################################################
 # JOBS
@@ -49,9 +52,7 @@ jobs:
       #########################################################################
 
       - name: 🏗 Build packages
-        run: pnpm build
-      - name: 🏗 Build docs
-        run: pnpm build-doc
+        run: ${{env.BUILD_CMD}}
 
       ###################################################################
       # BUILD AND DEPLOY
@@ -64,8 +65,8 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-          projectName: "dovenv"
-          directory: 'packages/docs/build/docs'
+          projectName: "${{env.DOCS_ID}}"
+          directory: ${{env.DOCS_DIR}}
           wranglerVersion: '3'
 
 ###############################################################################

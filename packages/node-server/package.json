@@ -50,7 +50,8 @@
 	"scripts": {
 		"build": "pnpm build:lib",
 		"build:lib": "unbuild",
-		"dev": "tsx src/main.ts"
+		"dev": "tsx src/main.ts",
+		"test": "playwright test"
 	},
 	"dependencies": {
 		"@backan/server": "0.1.4",

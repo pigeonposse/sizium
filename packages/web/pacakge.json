@@ -1,12 +1,12 @@
 {
-	"name": "@sizium/docs",
+	"name": "@sizium/web",
 	"private": true,
-	"description": "Documentation page for sizium",
+	"description": "Web Page for use sizium",
 	"keywords": [
 		"pigeonposse",
 		"pp",
 		"sizium",
-		"docs"
+		"web"
 	],
 	"homepage": "https://sizium.pigeonposse.com",
 	"bugs": {
@@ -25,21 +25,11 @@
 	},
 	"type": "module",
 	"scripts": {
-		"build": "pnpm build:pre && pnpm build:web",
-		"build:pre": "dovenv predocs",
-		"build:web": "dovenv docs build",
-		"dev": "dovenv docs dev",
-		"preview": "dovenv docs preview",
-		"test": "playwright test"
 	},
 	"devDependencies": {
-		"sizium": "workspace:*",
 		"@sizium/core": "workspace:*",
-		"@sizium/cli": "workspace:*",
 		"@sizium/api": "workspace:*",
-		"@sizium/node-server": "workspace:*",
-		"@sizium/api-client": "workspace:*",
-		"@sizium/repo-config": "workspace:*"
+		"@sizium/api-client": "workspace:*"
 	},
 	"publishConfig": {
 		"access": "public",

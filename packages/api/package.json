@@ -43,6 +43,7 @@
 	"scripts": {
 		"build": "vite build",
 		"dev": "vite dev",
+		"test": "pnpm run --sequential \"/test:.*/\"",
 		"test:e2e": "playwright test",
 		"test:unit": "vitest run src --passWithNoTests"
 	},

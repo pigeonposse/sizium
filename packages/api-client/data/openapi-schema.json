@@ -3,7 +3,7 @@
   "info": {
     "version": "0.0.1",
     "title": "@sizium/api",
-    "description": "Api rest for Sizium. Get the size of your package"
+    "description": "REST API for Sizium. Get the actual size of any local or remote package"
   },
   "components": {
     "schemas": {},

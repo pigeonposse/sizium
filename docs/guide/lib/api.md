@@ -76,6 +76,10 @@ It uses either the registry or local search mechanism depending on the input typ
 
 A promise that resolves with the package response data.
 
+###### See
+
+https://sizium.pigeonposse.com/guide/core/api#siziumresponse
+
 #### Properties
 
 | Property | Type |

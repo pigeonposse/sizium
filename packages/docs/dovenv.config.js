@@ -91,12 +91,12 @@ export default defineConfig(
 			return {
 				...data,
 				input     : '../../docs',
-				output    : '../../build',
+				output    : './build', // because "dovenv@1.1.5" not work with ../.. routes
 				version   : core.corePkg?.version,
 				vitepress : {
 					ignoreDeadLinks : true,
 					themeConfig     : { outline: { level: [ 2, 3 ] } },
-					vite            : { build: { chunkSizeWarningLimit: 1000 } },
+					// vite            : { build: { chunkSizeWarningLimit: 1000 } },
 				},
 				sidebar : {
 					'/guide/'       : sidebar,
@@ -115,17 +115,6 @@ export default defineConfig(
 						url  : joinUrl( core.corePkg.repository.url, 'releases' ),
 					} },
 				},
-				// navLinks : [
-				// 	{
-				// 		text  : 'Download',
-				// 		items : [
-				// 			{
-				// 				text : 'Executables',
-				// 				link : '',
-				// 			},
-				// 		],
-				// 	},
-				// ],
 				styles : { color: { dark: { bgSoft: '#110e12' } } },
 			}
 
