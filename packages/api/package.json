@@ -1,0 +1,61 @@
+{
+	"name": "@sizium/api",
+	"version": "0.0.1",
+	"description": "REST API for Sizium. Get the actual size of any local or remote package",
+	"keywords": [
+		"pp",
+		"pigeonposse",
+		"pkg-size",
+		"package",
+		"size",
+		"api"
+	],
+	"homepage": "https://sizium.pigeonposse.com/guide/api",
+	"bugs": {
+		"url": "https://github.com/pigeonposse/sizium/issues",
+		"email": "dev@pigeonposse.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/sizium",
+		"directory": "packages/api"
+	},
+	"funding": {
+		"type": "individual",
+		"url": "https://pigeonposse.com/?popup=donate"
+	},
+	"license": "GPL-3.0",
+	"author": {
+		"name": "Angelo",
+		"email": "angelo@pigeonposse.com",
+		"url": "https://github.com/angelespejo"
+	},
+	"type": "module",
+	"exports": {
+		".": "./dist/main.js"
+	},
+	"main": "dist/main.js",
+	"module": "dist/main.js",
+	"types": "dist/main.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "vite build",
+		"dev": "vite dev",
+		"test:e2e": "playwright test",
+		"test:unit": "vitest run src --passWithNoTests"
+	},
+	"dependencies": {
+		"@sizium/core": "workspace:*",
+		"backan": "0.1.4"
+	},
+	"devDependencies": {
+		"@hono/vite-dev-server": "0.18.0",
+		"@sizium/repo-config": "workspace:*"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	}
+}

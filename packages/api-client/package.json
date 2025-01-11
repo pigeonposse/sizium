@@ -1,0 +1,61 @@
+{
+	"name": "@sizium/api-client",
+	"version": "0.0.1",
+	"description": "REST API client for Sizium. Get the actual size of any local or remote package",
+	"keywords": [
+		"pp",
+		"pigeonposse",
+		"pkg-size",
+		"package",
+		"size",
+		"api",
+		"client"
+	],
+	"homepage": "https://sizium.pigeonposse.com/guide/api-client",
+	"bugs": {
+		"url": "https://github.com/pigeonposse/sizium/issues",
+		"email": "dev@pigeonposse.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/sizium",
+		"directory": "packages/api-client"
+	},
+	"funding": {
+		"type": "individual",
+		"url": "https://pigeonposse.com/?popup=donate"
+	},
+	"license": "GPL-3.0",
+	"author": {
+		"name": "Angelo",
+		"email": "angelo@pigeonposse.com",
+		"url": "https://github.com/angelespejo"
+	},
+	"type": "module",
+	"exports": {
+		".": "./dist/main.mjs"
+	},
+	"main": "dist/main.mjs",
+	"module": "dist/main.mjs",
+	"types": "dist/main.d.ts",
+	"files": [
+		"dist",
+		"data"
+	],
+	"scripts": {
+		"build": "pnpm build:pre && pnpm build:lib",
+		"build:lib": "unbuild",
+		"build:pre": "tsx build.pre.ts",
+		"dev": "tsx examples/main.ts",
+		"test:unit": "vitest run src --passWithNoTests"
+	},
+	"devDependencies": {
+		"@backan/builder": "0.1.4",
+		"@sizium/api": "workspace:*",
+		"@sizium/repo-config": "workspace:*"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	}
+}

@@ -1,0 +1,68 @@
+{
+	"name": "@sizium/cli",
+	"version": "0.0.1",
+	"description": "Get the actual size of any local or remote package",
+	"keywords": [
+		"pp",
+		"pigeonposse",
+		"pkg-size",
+		"package",
+		"size",
+		"cli",
+		"bin"
+	],
+	"homepage": "https://sizium.pigeonposse.com/guide/cli",
+	"bugs": {
+		"url": "https://github.com/pigeonposse/sizium/issues",
+		"email": "dev@pigeonposse.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/sizium",
+		"directory": "packages/cli"
+	},
+	"funding": {
+		"type": "individual",
+		"url": "https://pigeonposse.com/?popup=donate"
+	},
+	"license": "GPL-3.0",
+	"author": {
+		"name": "Angelo",
+		"email": "angelo@pigeonposse.com",
+		"url": "https://github.com/angelespejo"
+	},
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/main.d.ts",
+			"import": "./dist/main.mjs",
+			"require": "./dist/main.cjs"
+		}
+	},
+	"main": "dist/main.cjs",
+	"module": "dist/main.mjs",
+	"types": "dist/main.d.ts",
+	"bin": {
+		"sizium": "dist/main.mjs"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "pnpm build:lib && pnpm build:bin",
+		"build:bin": "binarium -c build.binarium.js",
+		"build:lib": "unbuild",
+		"dev": "tsx src/main.ts"
+	},
+	"dependencies": {
+		"@sizium/core": "workspace:*",
+		"picocolors": "^1.1.1"
+	},
+	"devDependencies": {
+		"@sizium/repo-config": "workspace:*"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	}
+}
