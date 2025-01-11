@@ -23,7 +23,7 @@ env:
 
 jobs:
   checks:
-    runs-on: ubuntu-latest
+    runs-on: 'macos-14' # this is arm64 and we needed for build bins
     steps:
 
       #########################################################################
