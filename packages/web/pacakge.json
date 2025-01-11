@@ -29,7 +29,8 @@
 	"devDependencies": {
 		"@sizium/core": "workspace:*",
 		"@sizium/api": "workspace:*",
-		"@sizium/api-client": "workspace:*"
+		"@sizium/api-client": "workspace:*",
+		"@sizium/repo-config": "workspace:*"
 	},
 	"publishConfig": {
 		"access": "public",

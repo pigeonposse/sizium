@@ -48,8 +48,7 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "pnpm build:lib",
-		"build:lib": "unbuild",
+		"build": "unbuild",
 		"dev": "tsx src/main.ts",
 		"test": "playwright test"
 	},
