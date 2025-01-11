@@ -4,8 +4,8 @@
 layout: home
 hero:
   name: SIZIUM
-  tagline: Get the actual size of any local or remote package
-  text: Find the true size of an npm package
+  tagline: Find the true size of an npm package
+  text: Get the true size of any local or remote package
   image:
     src: /logo.png
     alt: sizium

@@ -33,13 +33,13 @@
 		"test": "playwright test"
 	},
 	"devDependencies": {
-		"sizium": "workspace:*",
-		"@sizium/core": "workspace:*",
-		"@sizium/cli": "workspace:*",
 		"@sizium/api": "workspace:*",
-		"@sizium/node-server": "workspace:*",
 		"@sizium/api-client": "workspace:*",
-		"@sizium/repo-config": "workspace:*"
+		"@sizium/cli": "workspace:*",
+		"@sizium/core": "workspace:*",
+		"@sizium/node-server": "workspace:*",
+		"@sizium/repo-config": "workspace:*",
+		"sizium": "workspace:*"
 	},
 	"publishConfig": {
 		"access": "public",

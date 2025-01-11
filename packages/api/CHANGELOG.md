@@ -1,0 +1,10 @@
+# @sizium/api
+
+## 0.0.2
+
+### Patch Changes
+
+- Fix cli output, up docs and env workflows
+
+- Updated dependencies []:
+  - @sizium/core@0.0.2

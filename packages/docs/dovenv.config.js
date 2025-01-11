@@ -109,11 +109,14 @@ export default defineConfig(
 				},
 				download : {
 					groups : { bin: 'Executables' },
-					items  : { all : {
-						name : 'View all',
-						type : 'bin',
-						url  : joinUrl( core.corePkg.repository.url, 'releases' ),
-					} },
+					items  : {
+						...core.pkg.extra.downloadUrl,
+						all : {
+							name : 'View all',
+							type : 'bin',
+							url  : joinUrl( core.corePkg.repository.url, 'releases' ),
+						},
+					},
 				},
 				styles : { color: { dark: { bgSoft: '#110e12' } } },
 			}

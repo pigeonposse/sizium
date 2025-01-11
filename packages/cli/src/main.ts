@@ -38,7 +38,7 @@ const run = async () => {
 		if ( FLAGS.RES === RES_TYPE.SIZE ) console.log( `${data.size} bytes | ${data.size / 1000000} megabytes` )
 		else if ( FLAGS.RES === RES_TYPE.INFO ) console.log( `Name: ${data.id}\nPackages: ${data.packageNum}\nSize: ${data.size} bytes | ${data.size / 1000000} megabytes` )
 		else if ( FLAGS.RES === RES_TYPE.JSON ) console.log( JSON.stringify( data ) )
-		else console.dir( data, { length: Infinity } )
+		else console.dir( data, { depth: Infinity } )
 
 	}
 	else printHelp( name, description, documentationURL, version )

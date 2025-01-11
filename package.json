@@ -36,8 +36,8 @@
 		"packages/*"
 	],
 	"scripts": {
-		"+": "run() { pnpm -F @sizium/\"${@:1}\"; }; run $@",
-		"++": "run() { pnpm -F \"${@:1}\"; }; run $@",
+		"+": "run() { pnpm -F @sizium/$1 ${@:2}; }; run $@",
+		"++": "run() { pnpm -F $1 ${@:2}; }; run $@",
 		".": "dovenv",
 		"build": "pnpm build:lib && pnpm build:api && pnpm build:docs",
 		"build:api": "pnpm + api build && pnpm + api-client build && pnpm + node-server build",
@@ -74,13 +74,13 @@
 	"extra": {
 		"id": "sizium",
 		"productName": "sizium",
-		"shortDesc": "Get the actual size of any local or remote package",
-		"action": "Find the true size of an npm package",
-		"libraryUrl": "https://www.npmjs.com/package/@sizium/core",
+		"action": "Get the true size of any local or remote package",
+		"shortDesc": "Find the true size of an npm package",
+		"libraryUrl": "https://www.npmjs.com/package/sizium",
 		"licenseUrl": "https://github.com/pigeonposse/sizium/blob/main/LICENSE",
 		"changelogUrl": "https://github.com/pigeonposse/sizium/blob/main/packages/core/CHANGELOG.md",
 		"contributingUrl": "https://github.com/pigeonposse/.github/blob/main/CONTRIBUTING.md",
-		"libraryId": "@sizium/core",
+		"libraryId": "sizium",
 		"repoId": "sizium",
 		"rawRepoUrl": "https://raw.githubusercontent.com/pigeonposse/sizium",
 		"docsUrl": "https://sizium.pigeonposse.com",
@@ -108,6 +108,56 @@
 				"twitter": "https://twitter.com/pigeonposse_",
 				"instagram": "https://www.instagram.com/pigeon.posse/",
 				"medium": "https://medium.com/@pigeonposse"
+			}
+		},
+		"downloadUrl": {
+			"binLinuxX64": {
+				"name": "Linux (x64)",
+				"logo": "gnubash",
+				"url": "https://github.com/pigeonposse/sizium/releases/latest/download/sizium-linux-x64.zip",
+				"type": "bin"
+			},
+			"binLinuxArm64": {
+				"name": "Linux (arm64)",
+				"logo": "gnubash",
+				"url": "https://github.com/pigeonposse/sizium/releases/latest/download/sizium-linux-arm64.zip",
+				"type": "bin"
+			},
+			"binMacosX64": {
+				"name": "MacOS (x64)",
+				"logo": "gnubash",
+				"url": "https://github.com/pigeonposse/sizium/releases/latest/download/sizium-macos-x64.zip",
+				"type": "bin"
+			},
+			"binMacosArm64": {
+				"name": "MacOS (arm64)",
+				"logo": "gnubash",
+				"url": "https://github.com/pigeonposse/sizium/releases/latest/download/sizium-macos-arm64.zip",
+				"type": "bin"
+			},
+			"binAlpineX64": {
+				"name": "Alpine (x64)",
+				"logo": "gnubash",
+				"url": "https://github.com/pigeonposse/sizium/releases/latest/download/sizium-alpine-x64.zip",
+				"type": "bin"
+			},
+			"binAlpineArm64": {
+				"name": "Alpine (arm64)",
+				"logo": "gnubash",
+				"url": "https://github.com/pigeonposse/sizium/releases/latest/download/sizium-alpine-arm64.zip",
+				"type": "bin"
+			},
+			"binWinX64": {
+				"name": "Windows (x64)",
+				"logo": "gnubash",
+				"url": "https://github.com/pigeonposse/sizium/releases/latest/download/sizium-win-x64.exe.zip",
+				"type": "bin"
+			},
+			"binWinArm64": {
+				"name": "Windows (arm64)",
+				"logo": "gnubash",
+				"url": "https://github.com/pigeonposse/sizium/releases/latest/download/sizium-win-arm64.exe.zip",
+				"type": "bin"
 			}
 		}
 	}
