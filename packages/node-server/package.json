@@ -56,6 +56,9 @@
 		"@backan/server": "0.1.4",
 		"@sizium/api": "workspace:*"
 	},
+	"devDependencies": {
+		"@sizium/repo-config": "workspace:*"
+	},
 	"publishConfig": {
 		"access": "public",
 		"registry": "https://registry.npmjs.org/"
