@@ -20,7 +20,7 @@ env:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       UPDATED_VERSION: ${{ github.event.inputs.version }}
 
