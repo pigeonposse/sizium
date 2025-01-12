@@ -107,6 +107,12 @@ export default defineConfig(
 					intro     : false,
 					reference : false,
 				},
+				nav : [
+					{
+						text : 'web',
+						link : core.pkg.homepage,
+					},
+				],
 				download : {
 					groups : { bin: 'Executables' },
 					items  : {
