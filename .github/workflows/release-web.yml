@@ -58,15 +58,15 @@ jobs:
       # BUILD AND DEPLOY
       ###################################################################
 
+      - uses: actions/checkout@v4
       - name: 🌥 Deploy in cloudflare pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ${{env.DOCS_DIR}} --project-name=${{env.DOCS_ID}}
+          # Optional: Enable this if you want to have GitHub Deployments triggered
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
-          projectName: "${{env.DOCS_ID}}"
-          directory: ${{env.DOCS_DIR}}
-          wranglerVersion: '3'
+          packageManager: pnpm
 
 ###############################################################################
