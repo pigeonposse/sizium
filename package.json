@@ -41,6 +41,7 @@
 		".": "dovenv",
 		"build": "pnpm build:core && pnpm build:lib && pnpm build:api && pnpm build:docs && pnpm build:web",
 		"build:api": "pnpm + api build && pnpm + api-client build && pnpm + node-server build",
+		"build:bin": "binarium -c .dovenv/build.binarium.js",
 		"build:core": "pnpm + core build",
 		"build:docs": "pnpm + docs build",
 		"build:lib": "pnpm + cli build && pnpm ++ sizium build",

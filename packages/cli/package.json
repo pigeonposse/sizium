@@ -49,8 +49,7 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "pnpm build:lib && pnpm build:bin",
-		"build:bin": "binarium -c build.binarium.js",
+		"build": "pnpm build:lib",
 		"build:lib": "unbuild",
 		"dev": "tsx src/main.ts"
 	},
