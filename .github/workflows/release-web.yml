@@ -11,7 +11,8 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 env:
     GITHUB_TOKEN: ${{ github.token }}
     DOCS_ID: 'sizium'
-    DOCS_DIR: 'packages/web/.svelte-kit/cloudflare'
+    WORKING_DIR: 'packages/web'
+    DOCS_DIR: '.svelte-kit/cloudflare'
     BUILD_CMD: 'pnpm build:core && pnpm build:web'
 
 ###############################################################################
@@ -65,6 +66,7 @@ jobs:
           command: pages deploy ${{env.DOCS_DIR}} --project-name=${{env.DOCS_ID}}
           # Optional: Enable this if you want to have GitHub Deployments triggered
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          workingDirectory: ${{env.WORKING_DIR}}
         #   packageManager: pnpm
 
 ###############################################################################
