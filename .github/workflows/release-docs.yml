@@ -21,8 +21,6 @@ env:
 jobs:
   deploy:
     runs-on: macos-latest
-    env:
-      UPDATED_VERSION: ${{ github.event.inputs.version }}
 
     steps:
 

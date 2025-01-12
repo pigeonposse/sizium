@@ -21,8 +21,6 @@ env:
 jobs:
   deploy:
     runs-on: macos-latest
-    env:
-      UPDATED_VERSION: ${{ github.event.inputs.version }}
 
     steps:
 
@@ -67,6 +65,6 @@ jobs:
           command: pages deploy ${{env.DOCS_DIR}} --project-name=${{env.DOCS_ID}}
           # Optional: Enable this if you want to have GitHub Deployments triggered
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          packageManager: pnpm
+        #   packageManager: pnpm
 
 ###############################################################################
