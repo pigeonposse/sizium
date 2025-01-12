@@ -175,12 +175,12 @@ jobs:
         with:
           workflow: release-docs.yml
         continue-on-error: true
-	
+
       #########################################################################
       # WEB
       #########################################################################
 
-      - name: 📚🐙😺➡️ Call to workflow for deploy Documentation
+      - name: 📚🐙😺➡️ Call to workflow for deploy Web
         if: steps.updated.outputs.core_version != ''
         uses: benc-uk/workflow-dispatch@v1
         with:
