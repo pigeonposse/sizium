@@ -94,8 +94,7 @@
 
 <svelte:head>
 	<title>{MAIN_PKG.extra.productName} - {MAIN_PKG.extra.shortDesc}</title>
-	<description>{MAIN_PKG.description}</description>
-	<meta name="description" content="Discover the true size and dependencies of npm packages with Sizium." />
+	<meta name="description" content="{MAIN_PKG.description}" />
 </svelte:head>
 
 <div class="text-center mb-12 justify-center flex-col items-center content-center justify-items-center">
