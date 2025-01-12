@@ -11,6 +11,28 @@ export class PackageSuper {
 
 	protected getPkgData( data: PackageJSON, level = 0, unpackedSize?: number, installedBy?: string | string[] ): PackageInfo {
 
+		const normalizeRepositoryUrl = ( url?: string ): string | undefined => {
+
+			if ( !url ) return undefined
+
+			try {
+
+				const parsedUrl    = new URL( url )
+				parsedUrl.protocol = 'https:' // force https
+
+				if ( parsedUrl.pathname.endsWith( '.git' ) )
+					parsedUrl.pathname = parsedUrl.pathname.slice( 0, -4 )
+
+				return parsedUrl.toString()
+
+			}
+			catch ( _error ) {
+
+				return undefined
+
+			}
+
+		}
 		return {
 			name        : data.name,
 			version     : data.version,
@@ -26,10 +48,12 @@ export class PackageSuper {
 				}
 				: undefined,
 			url : {
-				homepage   : data.homepage,
-				repository : typeof data.repository === 'string'
-					? data.repository
-					: data.repository?.url,
+				homepage   : normalizeRepositoryUrl( data.homepage ),
+				repository : normalizeRepositoryUrl(
+					typeof data.repository === 'string'
+						? data.repository
+						: data.repository?.url,
+				),
 				funding : Array.isArray( data.funding )
 					? typeof data.funding[0] === 'string'
 						? data.funding[0]

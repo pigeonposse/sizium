@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/api",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "REST API for Sizium. Get the actual size of any local or remote package",
 	"keywords": [
 		"pp",

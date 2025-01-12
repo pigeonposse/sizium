@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	body {
+		@apply bg-primary-50 dark:bg-primary-950
+	}
+	a {
+		@apply text-primary-600 dark:text-primary-200 hover:text-primary-500/30;
+	}
+	p {
+		@apply text-primary-600 dark:text-primary-200/50
+	}
+	span {
+		@apply text-primary-600/20 dark:text-primary-200/30
+	}
+	input, select {
+		@apply bg-primary-100/20 dark:bg-primary-900/20 border-primary-700/50 focus:ring-primary-500 focus:border-primary-500 text-primary-500 placeholder:text-primary-400/50
+	}
+	button {
+		@apply text-primary-400 hover:text-primary-600
+	}
+	h2, h3 {
+		@apply text-primary-900 dark:text-primary-200
+	}
+	h1 {
+		@apply text-primary-500
+	}
+
+}

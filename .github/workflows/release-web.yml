@@ -10,9 +10,9 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 env:
     GITHUB_TOKEN: ${{ github.token }}
-    DOCS_ID: 'docs-sizium'
-    DOCS_DIR: 'packages/docs/build/docs'
-    BUILD_CMD: 'pnpm build'
+    DOCS_ID: 'sizium'
+    DOCS_DIR: 'packages/web/.svelte-kit/cloudflare'
+    BUILD_CMD: 'pnpm build:core && pnpm build:web'
 
 ###############################################################################
 # JOBS
