@@ -57,7 +57,6 @@ jobs:
       # BUILD AND DEPLOY
       ###################################################################
 
-      - uses: actions/checkout@v4
       - name: 🌥 Deploy in cloudflare pages
         uses: cloudflare/wrangler-action@v3
         with:
