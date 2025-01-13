@@ -113,6 +113,7 @@ export default defineConfig(
 						link : core.pkg.homepage,
 					},
 				],
+				// pwa      : { pwaAssets: false },
 				download : {
 					groups : { bin: 'Executables' },
 					items  : {

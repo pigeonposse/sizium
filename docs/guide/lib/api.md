@@ -260,20 +260,24 @@ const data = await size.get()
 ##### new SiziumLocal()
 
 ```ts
-new SiziumLocal(packagePath: string): SiziumLocal
+new SiziumLocal(input: string, opts?: {
+  skipError: boolean;
+ }): SiziumLocal
 ```
 
 ###### Parameters
 
-| Parameter | Type |
-| ------ | ------ |
-| `packagePath` | `string` |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `input` | `string` | - |
+| `opts`? | `object` | - |
+| `opts.skipError`? | `boolean` | Skip error on package dependence and return undefined |
 
 ###### Returns
 
 [`SiziumLocal`](#siziumlocal)
 
-###### Overrides
+###### Inherited from
 
 `PackageSuper.constructor`
 
@@ -291,9 +295,17 @@ get(): Promise<SiziumResponse>
 
 #### Properties
 
-| Property | Type |
-| ------ | ------ |
-| `packagePath` | `string` |
+| Property | Modifier | Type | Description | Inherited from |
+| ------ | ------ | ------ | ------ | ------ |
+| `Error` | `public` | *typeof* `SiziumError` | - | `PackageSuper.Error` |
+| `ERROR_ID` | `public` | \{ `GETTING_LOCAL_DATA`: `"GETTING_LOCAL_DATA"`; `GETTING_PKG_NAME`: `"GETTING_PKG_NAME"`; `GETTING_REGISTRY_DATA`: `"GETTING_REGISTRY_DATA"`; `INVALID_PKG_NAME`: `"INVALID_PKG_NAME"`; \} | - | `PackageSuper.ERROR_ID` |
+| `ERROR_ID.GETTING_LOCAL_DATA` | `readonly` | `"GETTING_LOCAL_DATA"` | - | - |
+| `ERROR_ID.GETTING_PKG_NAME` | `readonly` | `"GETTING_PKG_NAME"` | - | - |
+| `ERROR_ID.GETTING_REGISTRY_DATA` | `readonly` | `"GETTING_REGISTRY_DATA"` | - | - |
+| `ERROR_ID.INVALID_PKG_NAME` | `readonly` | `"INVALID_PKG_NAME"` | - | - |
+| `input` | `public` | `string` | - | `PackageSuper.input` |
+| `opts?` | `public` | \{ `skipError`: `boolean`; \} | - | `PackageSuper.opts` |
+| `opts.skipError` | `public` | `boolean` | Skip error on package dependence and return undefined | - |
 
 ***
 
@@ -320,20 +332,24 @@ console.log(data.size) // total size on bytes
 ##### new SiziumRegistry()
 
 ```ts
-new SiziumRegistry(name: string): SiziumRegistry
+new SiziumRegistry(input: string, opts?: {
+  skipError: boolean;
+ }): SiziumRegistry
 ```
 
 ###### Parameters
 
-| Parameter | Type |
-| ------ | ------ |
-| `name` | `string` |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `input` | `string` | - |
+| `opts`? | `object` | - |
+| `opts.skipError`? | `boolean` | Skip error on package dependence and return undefined |
 
 ###### Returns
 
 [`SiziumRegistry`](#siziumregistry)
 
-###### Overrides
+###### Inherited from
 
 `PackageSuper.constructor`
 
@@ -351,9 +367,17 @@ get(): Promise<SiziumResponse>
 
 #### Properties
 
-| Property | Type |
-| ------ | ------ |
-| `name` | `string` |
+| Property | Modifier | Type | Description | Inherited from |
+| ------ | ------ | ------ | ------ | ------ |
+| `Error` | `public` | *typeof* `SiziumError` | - | `PackageSuper.Error` |
+| `ERROR_ID` | `public` | \{ `GETTING_LOCAL_DATA`: `"GETTING_LOCAL_DATA"`; `GETTING_PKG_NAME`: `"GETTING_PKG_NAME"`; `GETTING_REGISTRY_DATA`: `"GETTING_REGISTRY_DATA"`; `INVALID_PKG_NAME`: `"INVALID_PKG_NAME"`; \} | - | `PackageSuper.ERROR_ID` |
+| `ERROR_ID.GETTING_LOCAL_DATA` | `readonly` | `"GETTING_LOCAL_DATA"` | - | - |
+| `ERROR_ID.GETTING_PKG_NAME` | `readonly` | `"GETTING_PKG_NAME"` | - | - |
+| `ERROR_ID.GETTING_REGISTRY_DATA` | `readonly` | `"GETTING_REGISTRY_DATA"` | - | - |
+| `ERROR_ID.INVALID_PKG_NAME` | `readonly` | `"INVALID_PKG_NAME"` | - | - |
+| `input` | `public` | `string` | - | `PackageSuper.input` |
+| `opts?` | `public` | \{ `skipError`: `boolean`; \} | - | `PackageSuper.opts` |
+| `opts.skipError` | `public` | `boolean` | Skip error on package dependence and return undefined | - |
 
 ## Functions
 
@@ -404,12 +428,16 @@ type PackageInfo: {
   isESM: boolean;
   level: number;
   license: string;
+  lifeCycleScripts: { [key in lifeCycleScripts]?: string };
   name: string;
   types: boolean;
   unpackedSize: number;
+  unpackedSizeKB: number;
+  unpackedSizeMB: number;
   url: {
      funding: string;
      homepage: string;
+     npm: string;
      repository: string;
      unpkg: string;
     };
@@ -432,12 +460,16 @@ type PackageInfo: {
 | `isESM` | `boolean` | - |
 | `level` | `number` | Level of the dependence installation. Main packages is 0 |
 | `license`? | `string` | - |
+| `lifeCycleScripts`? | `{ [key in lifeCycleScripts]?: string }` | - |
 | `name` | `string` | - |
 | `types` | `boolean` | - |
 | `unpackedSize` | `number` | Unpacked size in bytes |
-| `url` | \{ `funding`: `string`; `homepage`: `string`; `repository`: `string`; `unpkg`: `string`; \} | - |
+| `unpackedSizeKB` | `number` | - |
+| `unpackedSizeMB` | `number` | - |
+| `url` | \{ `funding`: `string`; `homepage`: `string`; `npm`: `string`; `repository`: `string`; `unpkg`: `string`; \} | - |
 | `url.funding`? | `string` | - |
 | `url.homepage`? | `string` | - |
+| `url.npm` | `string` | - |
 | `url.repository`? | `string` | - |
 | `url.unpkg`? | `string` | - |
 | `version` | `string` | - |
@@ -470,6 +502,8 @@ type SiziumResponse: {
   packageNum: number;
   packages: PackageInfo[];
   size: number;
+  sizeKB: number;
+  sizeMB: number;
 };
 ```
 
@@ -481,3 +515,5 @@ type SiziumResponse: {
 | `packageNum` | `number` | - |
 | `packages` | [`PackageInfo`](#packageinfo)[] | - |
 | `size` | `number` | Size in bytes |
+| `sizeKB` | `number` | - |
+| `sizeMB` | `number` | - |
