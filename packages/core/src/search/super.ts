@@ -1,11 +1,24 @@
 import semver from 'semver'
 
+import { ERROR_ID }   from './const'
+import { TypedError } from '../_shared/error'
+
 import type {
 	PackageJSON,
 	PackageInfo,
 } from './types'
 
+type SiziumErrorID = typeof ERROR_ID[keyof typeof ERROR_ID]
+
+export class SiziumError extends TypedError<SiziumErrorID, {
+	msg : string
+	e?  : unknown
+}> {}
+
 export class PackageSuper {
+
+	ERROR_ID = ERROR_ID
+	Error = SiziumError
 
 	private processedPackages : Set<string> = new Set()
 
@@ -76,26 +89,41 @@ export class PackageSuper {
 
 	}
 
+	#getVersion( version:string, availableVersions: string[] ) {
+
+		let selectedVersion: string | undefined
+		if ( semver.valid( version ) ) selectedVersion = version
+		else {
+
+			selectedVersion = semver.maxSatisfying( availableVersions, version ) || undefined
+
+		}
+		return selectedVersion?.replace( /^v(?=\d)/, '' )
+
+	}
+
 	protected async getRegistryData( packageName: string, version: string, level = 0, installedBy?: string ): Promise<PackageInfo> {
 
 		try {
 
 			const response = await fetch( `https://registry.npmjs.org/${packageName}` )
-			const res      = await response.json()
+			if ( !response.ok ) {
 
-			// Use semver to find the correct version
-			let selectedVersion: string
-			if ( semver.valid( version ) ) selectedVersion = version
-			else {
-
-				const availableVersions = Object.keys( res.versions )
-				selectedVersion         = semver.maxSatisfying( availableVersions, version ) || res['dist-tags'].latest
+				if ( response.status === 404 )
+					throw new Error( `Package "${packageName}" not found (404 Not Found).` )
+				else
+					throw new Error( `Failed to fetch data. HTTP Status: ${response.status}` )
 
 			}
+			const res = await response.json()
+
+			const selectedVersion = this.#getVersion( version, Object.keys( res.versions ) )
+				|| res['dist-tags'].latest
+				|| 'latest'
 
 			const data = res.versions[selectedVersion]
 
-			if ( !data ) throw new Error( `Version ${version} not found for package ${packageName}` )
+			if ( !data ) throw new Error( `Version ${version} (${selectedVersion}) not found` )
 
 			const size       = data.dist?.unpackedSize
 			const secureSize = typeof size === 'string' ? Number( size ) : typeof size === 'number' ? size : undefined
@@ -105,7 +133,13 @@ export class PackageSuper {
 		}
 		catch ( e ) {
 
-			throw new Error( `Error getting [${packageName}] data. ${e instanceof Error ? e.message : e}` )
+			throw new this.Error(
+				this.ERROR_ID.GETTING_REGISTRY_DATA,
+				{
+					msg : `Error getting "${packageName}" dependence data. ${e instanceof Error ? e.message : ''}`,
+					e,
+				},
+			)
 
 		}
 

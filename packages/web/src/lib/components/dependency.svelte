@@ -11,11 +11,11 @@
   </script>
   
   <div class="dep-card">
-    <div class="flex items-start justify-between gap-4">
+    <div class="flex items-start justify-between gap-4 sm:flex-row flex-col">
       <div class="flex-1">
         <div class="flex items-center gap-2 mb-1">
           <span class="text-lg font-semibold">{roundToTwoDecimals((pkg.unpackedSize / totalSize) * 100)}%</span>
-          <span class="text-sm title">{pkg.unpackedSize / 1024}KB</span>
+          <span class="text-sm title">{roundToTwoDecimals(pkg.unpackedSize / 1024 / 1024)}mb ({roundToTwoDecimals(pkg.unpackedSize / 1024)}kb)</span>
         </div>
         
         <div class="flex items-center gap-2 mb-2">
@@ -48,9 +48,10 @@
             <span class="title">Dependencies:</span>
             <span class="value" >{Object.keys(pkg.dependencies || {}).length}</span>
 			{#if Object.keys(pkg.dependencies || {}).length}
-				<div class="tooltip ">
+				<div class="tooltip">
 					{#each Object.keys(pkg.dependencies || {}) as name}
 						<span>{name}</span>
+						<hr>
 					{/each}
 				</div>
 			{/if}
@@ -89,7 +90,7 @@
   
   <style>
 	.dep-card {
-		@apply border-b border-primary-500/20 py-6 first:pt-0 last:border-0;
+		@apply border-b border-primary-500/20 py-6 first:pt-0 last:border-0 overflow-scroll;
 	}
 
 	.info {
@@ -98,16 +99,20 @@
 			@apply text-primary-500/50;
 		}
 		.value {
-			@apply text-primary-200/20;
+			@apply dark:text-primary-200/20 text-primary-800/50;
 		}
 	}
 	.tooltip {
-		@apply absolute top-full left-0 mt-2 p-2 bg-primary-950 rounded-lg shadow-lg z-10 hidden flex-col;
+		@apply absolute top-full left-0 mt-2 p-2 bg-primary-600 dark:bg-primary-950 rounded-lg shadow-lg z-10 hidden flex-col;
+
+		> span {
+			@apply text-primary-50;
+		}
 	}
 	.info:hover > .tooltip {
 		@apply flex; 
 	}
 	.badge {
-		@apply px-2 py-0.5 text-xs bg-primary-900/20 rounded-full;
+		@apply px-2 py-0.5 text-xs bg-primary-400/20 dark:bg-primary-900/20 rounded-full;
 	}
   </style>

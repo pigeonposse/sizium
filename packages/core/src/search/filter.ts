@@ -1,7 +1,7 @@
 import type {
 	PackageInfo,
 	SiziumResponse,
-} from './search/types'
+} from './types'
 
 /**
  * A class to filter and sort package information based on various criteria.

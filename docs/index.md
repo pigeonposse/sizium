@@ -8,7 +8,7 @@ hero:
   text: Get the true size of any local or remote package
   image:
     src: /logo.png
-    alt: sizium
+    alt: Sizium
   actions:
     - theme: brand
       text: Get started

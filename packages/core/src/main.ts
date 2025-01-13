@@ -1,5 +1,5 @@
 import { getInputType }   from './_shared/type'
-import { SiziumFilter }   from './filter'
+import { SiziumFilter }   from './search/filter'
 import { SiziumLocal }    from './search/local'
 import { SiziumRegistry } from './search/registry'
 

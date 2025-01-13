@@ -75,9 +75,13 @@ export class SiziumLocal extends PackageSuper {
 			}
 
 		}
-		catch ( error ) {
+		catch ( e ) {
 
-			throw new Error( `Error processing package file: ${error instanceof Error ? error.message : String( error )}` )
+			throw new this.Error(
+				this.ERROR_ID.GETTING_LOCAL_DATA, {
+					msg : `Error processing package file: ${e instanceof Error ? e.message : ''}`,
+					e,
+				} )
 
 		}
 

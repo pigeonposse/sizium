@@ -1,14 +1,15 @@
 <script lang="ts">
 	
 	import { fade } from 'svelte/transition';
-	import type { SiziumResponse, PackageInfo } from '@sizium/core';
+	import type { SiziumResponse } from '@sizium/core';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import DependencyItem from '$lib/components/dependency.svelte';
 	import DepLinks from '$lib/components/dep-links.svelte';
-	import { roundToTwoDecimals } from '$lib/utils';
+	import { roundToTwoDecimals, getPkgData, decodeQueryParam } from '$lib/utils';
 	import Search from '$lib/components/search.svelte';
+
 	
 	let searchQuery = '';
 	let loading = false;
@@ -30,11 +31,9 @@
 	  try {
 		updateURL(name);
 
-		const response = await fetch(`/api/package?name=${encodeURIComponent(name)}`);
-		const data = await response.json();
-		if (!response.ok) throw new Error(data.message || 'Failed to fetch package info');
+		const data = await getPkgData(name)
 		
-		packageInfo = data;
+		packageInfo = data
 		
 	  } catch (e) {
 		if(e instanceof Error) error = e.message;
@@ -53,38 +52,38 @@
 	function updateURL(packageName: string) {
 		if (browser) {
 			const url = new URL(window.location.href);
-			url.searchParams.set(paramsID.search, encodeURIComponent(packageName)); // Añade o actualiza el parámetro "s"
+			url.searchParams.set(paramsID.search, encodeURIComponent(packageName)); 
 			window.history.pushState({}, '', url.toString()); // Actualiza la URL sin recargar la página
 		}
 	}
 
 
-	function sortPackages(packages: PackageInfo[]): PackageInfo[] {
+	// function sortPackages(packages: PackageInfo[]): PackageInfo[] {
 
-		return [...packages].sort((a, b) => {
-			switch (sortBy) {
-				case 'size':
-					return b.unpackedSize - a.unpackedSize;
-				case 'name':
-					return a.name.localeCompare(b.name);
-				case 'level':
-					return a.level - b.level;
-				default:
-					return 0;
-			}
-		});
-	}
+	// 	return [...packages].sort((a, b) => {
+	// 		switch (sortBy) {
+	// 			case 'size':
+	// 				return b.unpackedSize - a.unpackedSize;
+	// 			case 'name':
+	// 				return a.name.localeCompare(b.name);
+	// 			case 'level':
+	// 				return a.level - b.level;
+	// 			default:
+	// 				return 0;
+	// 		}
+	// 	});
+	// }
 
 	$: filteredPackages = packageInfo?.packages.filter(pkg => 
 		!searchFilter || pkg.name.toLowerCase().includes(searchFilter.toLowerCase())
 	) ?? [];
 
-	$: sortedPackages = sortPackages(filteredPackages);
+
 
 	onMount(() => {
 		const value = $page.url.searchParams.get(paramsID.search)
 		if (value) {
-			searchQuery = value;
+			searchQuery = decodeQueryParam(value);
 			searchPackage(searchQuery);
 		}
 	});
@@ -98,9 +97,10 @@
 </svelte:head>
 
 <div class="text-center mb-12 justify-center flex-col items-center content-center justify-items-center">
-	<img src="/favicon.png" alt="Sizium logo" width="80" height="80">
+
+	<img src="/favicon.png" alt="Sizium logo" width="80" height="80" >
 	<h1 class="text-4xl font-bold mb-4">{MAIN_PKG.extra.productName.toUpperCase()}</h1>
-	<p class="subtitle">Find the true size of any <strong>npm</strong> <i>package</i></p>
+	<p class="subtitle">Find the true size of any <strong><a href="https://www.npmjs.com/" target="_blank">npm</a></strong> <i>package</i></p>
 </div>
 
 <form 
@@ -132,7 +132,7 @@
 
 	<div class="container-pkg" transition:fade>
 		<div class="header">
-			<h2 class="mb-4 text-lg font-bold">
+			<h2 class="text-lg font-bold">
 				<a href="https://www.npmjs.com/package/{packageInfo.packages[0].name}" target="_blank">
 					{packageInfo.packages[0].name}@{packageInfo.packages[0].version}
 				</a>
@@ -146,12 +146,12 @@
 			<div >
 				<div>
 					<p class="title">Total Size</p>
-					<p class="value">{roundToTwoDecimals(packageInfo.size / 1024 / 1024)}mb <span class="opacity-30 italic font-medium">({roundToTwoDecimals(packageInfo.size / 1024)}kb)</span></p>
+					<p class="value">{roundToTwoDecimals(packageInfo.size / 1024 / 1024)}mb <span>({roundToTwoDecimals(packageInfo.size / 1024)}kb)</span></p>
 				</div>
 				
 				<div >
 					<p class="title">Unpacked Size</p>
-					<p class="value">{roundToTwoDecimals(packageInfo.packages[0].unpackedSize / 1024 / 1024)}mb <span class="opacity-30 italic font-medium">({roundToTwoDecimals(packageInfo.packages[0].unpackedSize / 1024)}kb)</span></p>
+					<p class="value">{roundToTwoDecimals(packageInfo.packages[0].unpackedSize / 1024 / 1024)}mb <span>({roundToTwoDecimals(packageInfo.packages[0].unpackedSize / 1024)}kb)</span></p>
 				</div>
 			</div>
 			
@@ -172,7 +172,10 @@
 
 		{#if packageInfo.packages.length > 1}
 			<div class="deps">
+				<hr class="mb-10">
+				
 				<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+					<h2 class="text-xl font-bold text-primary-400">Packages</h2>
 					<div class="relative flex-1 max-w-xs">
 						<Search  
 							bind:value={searchFilter} 
@@ -193,7 +196,7 @@
 				</div>
 
 				<div class="space-y-6">
-					{#each sortedPackages as pkg }
+					{#each filteredPackages as pkg }
 						<DependencyItem {pkg} totalSize={packageInfo.size} />
 					{/each}
 				</div>
@@ -205,15 +208,15 @@
 <style>
 
 	.deps {
-		@apply mt-8 overflow-scroll;
+		@apply mt-8;
 	}
 	.subtitle {
 		@apply text-xl;
 	}
 	.container-pkg {
-		@apply rounded-lg shadow-lg p-6 mt-4 bg-primary-100/50 dark:bg-primary-900/20 backdrop:blur-lg overflow-scroll;
+		@apply rounded-lg shadow-lg p-6 mt-4 bg-primary-100/50 dark:bg-primary-900/20 backdrop:blur-lg;
 		.header {
-			@apply flex flex-row justify-between;
+			@apply flex sm:flex-row flex-col justify-between mb-4;
 		}
 		.cards {
 			@apply grid grid-cols-1 md:grid-cols-2 gap-6 mb-8;
@@ -228,6 +231,10 @@
 					}
 					.value {
 						@apply text-2xl font-bold;
+
+						> span {
+							@apply dark:opacity-30 italic font-medium;
+						}
 					}
 				}
 			}

@@ -23,19 +23,37 @@ export class SiziumRegistry extends PackageSuper {
 
 	#parseName( input: string ) {
 
-		const RE_SCOPED = /^(@[^\\/]+\/[^@\\/]+)(?:@([^\\/]+))?(\/.*)?$/
-		// Parsed a non-scoped package name into name, version, path
-		const RE_NON_SCOPED = /^([^@\\/]+)(?:@([^\\/]+))?(\/.*)?$/
-		input               = input.toLowerCase()
-		const m             = RE_SCOPED.exec( input ) || RE_NON_SCOPED.exec( input )
+		try {
 
-		if ( !m )
-			throw new Error( `[parse-package-name] invalid package name: ${input}` )
+			const RE_SCOPED = /^(@[^\\/]+\/[^@\\/]+)(?:@([^\\/]+))?(\/.*)?$/
+			// Parsed a non-scoped package name into name, version, path
+			const RE_NON_SCOPED = /^([^@\\/]+)(?:@([^\\/]+))?(\/.*)?$/
+			input               = input.toLowerCase()
+			const m             = RE_SCOPED.exec( input ) || RE_NON_SCOPED.exec( input )
 
-		return {
-			name    : m[1] || '',
-			version : m[2] || 'latest',
-			path    : m[3] || '',
+			if ( !m ) throw new this.Error(
+				this.ERROR_ID.INVALID_PKG_NAME,
+				{ msg: `invalid package name: ${input}` },
+			)
+
+			return {
+				name    : m[1] || '',
+				version : m[2] || 'latest',
+				path    : m[3] || '',
+			}
+
+		}
+		catch ( e ) {
+
+			if ( e instanceof this.Error ) throw e
+			throw new this.Error(
+				this.ERROR_ID.GETTING_PKG_NAME,
+				{
+					msg : `Unexpected error getting name`,
+					e,
+				},
+			)
+
 		}
 
 	}

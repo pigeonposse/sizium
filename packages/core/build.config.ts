@@ -4,7 +4,11 @@ import { defineBuildConfig } from 'unbuild'
 export default defineBuildConfig( [
 	{
 		...config,
-		entries : [ './src/main' ],
+		entries : [
+			'./src/main',
+			'./src/search/registry',
+			'./src/search/local',
+		],
 
 		externals : [ '@schemastore/package' ],
 	},

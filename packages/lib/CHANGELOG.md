@@ -1,5 +1,15 @@
 # sizium
 
+## 0.0.4
+
+### Patch Changes
+
+- Update web, fix core bugs, add core errors
+
+- Updated dependencies []:
+  - @sizium/core@0.0.4
+  - @sizium/cli@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes

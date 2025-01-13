@@ -19,6 +19,7 @@
 	colorArray={[
 		'white',
 		'var(--theme-primary)',
+		'var(--theme-primary-900)',
 	]}
 />
 
