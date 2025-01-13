@@ -7,8 +7,9 @@
 	import { browser } from '$app/environment';
 	import DependencyItem from '$lib/components/dependency.svelte';
 	import DepLinks from '$lib/components/dep-links.svelte';
-	import { roundToTwoDecimals, getPkgData, decodeQueryParam } from '$lib/utils';
+	import { getPkgData, decodeQueryParam } from '$lib/utils';
 	import Search from '$lib/components/search.svelte';
+	import DepMain from '$lib/components/dep-main.svelte';
 
 	
 	let searchQuery = '';
@@ -133,7 +134,7 @@
 	<div class="container-pkg" transition:fade>
 		<div class="header">
 			<h2 class="text-lg font-bold">
-				<a href="https://www.npmjs.com/package/{packageInfo.packages[0].name}" target="_blank">
+				<a href="{packageInfo.packages[0].url.npm}" target="_blank">
 					{packageInfo.packages[0].name}@{packageInfo.packages[0].version}
 				</a>
 			</h2>
@@ -142,33 +143,7 @@
 			</div>
 		</div>
 		
-		<div class="cards">
-			<div >
-				<div>
-					<p class="title">Total Size</p>
-					<p class="value">{roundToTwoDecimals(packageInfo.size / 1024 / 1024)}mb <span>({roundToTwoDecimals(packageInfo.size / 1024)}kb)</span></p>
-				</div>
-				
-				<div >
-					<p class="title">Unpacked Size</p>
-					<p class="value">{roundToTwoDecimals(packageInfo.packages[0].unpackedSize / 1024 / 1024)}mb <span>({roundToTwoDecimals(packageInfo.packages[0].unpackedSize / 1024)}kb)</span></p>
-				</div>
-			</div>
-			
-			<div >
-				<div >
-					<p class="title">Packages installed</p>
-					<p class="value">{packageInfo.packageNum === 1 ? 0 : packageInfo.packageNum }</p>
-				</div>
-				
-				<div >
-					<p class="title">Module Type</p>
-					<p class="value">
-						{packageInfo.packages[0].isESM ? 'ESM' : (packageInfo.packages[0].isCommonJS ? 'CommonJS' : 'Unknown')}
-					</p>
-				</div>
-			</div>
-		</div>
+		<DepMain data={packageInfo} />
 
 		{#if packageInfo.packages.length > 1}
 			<div class="deps">
@@ -218,26 +193,6 @@
 		.header {
 			@apply flex sm:flex-row flex-col justify-between mb-4;
 		}
-		.cards {
-			@apply grid grid-cols-1 md:grid-cols-2 gap-6 mb-8;
-			> div {
-				@apply space-y-4;
 
-				> div {
-					@apply dark:bg-primary-800/20 p-4 rounded-lg;
-
-					.title {
-						@apply text-sm;
-					}
-					.value {
-						@apply text-2xl font-bold;
-
-						> span {
-							@apply dark:opacity-30 italic font-medium;
-						}
-					}
-				}
-			}
-		}
 	}
 </style>

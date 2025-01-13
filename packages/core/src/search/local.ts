@@ -37,19 +37,13 @@ import type {
  */
 export class SiziumLocal extends PackageSuper {
 
-	constructor( public packagePath: string ) {
-
-		super()
-
-	}
-
 	async #getPackage(): Promise<PackageJSON> {
 
 		try {
 
-			if ( isUrl( this.packagePath ) ) {
+			if ( isUrl( this.input ) ) {
 
-				const response = await fetch( this.packagePath )
+				const response = await fetch( this.input )
 				if ( !response.ok )
 					throw new Error( `Failed to fetch package file from URL: ${response.statusText}` )
 
@@ -57,14 +51,14 @@ export class SiziumLocal extends PackageSuper {
 				return JSON.parse( content )
 
 			}
-			else if ( isJsonString( this.packagePath ) ) {
+			else if ( isJsonString( this.input ) ) {
 
-				return JSON.parse( this.packagePath )
+				return JSON.parse( this.input )
 
 			}
 			else {
 
-				let filePath = path.resolve( this.packagePath )
+				let filePath = path.resolve( this.input )
 				const stats  = await stat( filePath )
 
 				if ( stats.isDirectory() ) filePath = path.join( filePath, 'package.json' )
@@ -93,19 +87,7 @@ export class SiziumLocal extends PackageSuper {
 		const mainPackage = await this.getPkgData( packageData, 0 )
 		const allPackages = await this.getPackagesData( mainPackage )
 
-		const totalSize = allPackages.reduce( ( sum, pkg ) => {
-
-			const size = pkg.unpackedSize ?? 0
-			return sum + size
-
-		}, 0 )
-
-		return {
-			id         : packageData.name,
-			packageNum : allPackages.length,
-			size       : totalSize,
-			packages   : allPackages,
-		}
+		return this.getMainPkgData( allPackages )
 
 	}
 

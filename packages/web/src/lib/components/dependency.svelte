@@ -20,7 +20,7 @@
         
         <div class="flex items-center gap-2 mb-2">
           <h3 class="text-lg font-medium">
-            <a href="https://www.npmjs.com/package/{pkg.name}" target="_blank">{pkg.name}</a> <span class="text-primary-400">v{pkg.version}</span>
+            <a href="{pkg.url.npm}" target="_blank">{pkg.name}</a> <span class="text-primary-400">v{pkg.version}</span>
           </h3>
           {#if pkg.license}
             <span class="badge">{pkg.license}</span>

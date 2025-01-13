@@ -26,7 +26,7 @@ ${bold( 'Usage:' )} ${cyan( name )} ${green( '<command>' )} ${yellow( '[...flags
 
 ${bold( 'Options:' )}      
 
-  ${yellow( '-i, --input' )}            ${dim( 'Library input. Accepted:' )}
+  ${yellow( '-i, --input' )}           ${dim( 'Library input. Accepted:' )}
                          ${dim( '  - libraryID (name@version)' )}
                          ${dim( '  - path (dir to project / file to package.json)' )}
                          ${dim( '  - URL (to https://www.npmjs.com/package/${name} or link to package.json)' )}

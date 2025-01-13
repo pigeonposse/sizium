@@ -1,7 +1,12 @@
+/* eslint-disable @stylistic/object-curly-newline */
 import semver from 'semver'
 
-import { ERROR_ID }   from './const'
-import { TypedError } from '../_shared/error'
+import {
+	ERROR_ID,
+	LIFE_CYCLE_SCRIPTS,
+} from './const'
+import { TypedError }             from '../_shared/error'
+import { normalizeRepositoryUrl } from '../_shared/url'
 
 import type {
 	PackageJSON,
@@ -20,32 +25,55 @@ export class PackageSuper {
 	ERROR_ID = ERROR_ID
 	Error = SiziumError
 
+	constructor(
+		public input: string,
+		public opts?: {
+			/** Skip error on package dependence and return undefined  */
+			skipError : boolean
+		},
+	) {
+
+	}
+
 	private processedPackages : Set<string> = new Set()
+	protected LIFE_CYCLE_SCRIPTS = LIFE_CYCLE_SCRIPTS
+
+	protected getMainPkgData( allPackages: PackageInfo[] ) {
+
+		const totalSize = allPackages.reduce( ( sum, pkg ) => {
+
+			const size = pkg.unpackedSize ?? 0
+			return sum + size
+
+		}, 0 )
+
+		return {
+			id         : allPackages[0].name,
+			packageNum : allPackages.length,
+			size       : totalSize,
+			sizeKB     : totalSize / 1000,
+			sizeMB     : totalSize / 1000000,
+			packages   : allPackages,
+		}
+
+	}
 
 	protected getPkgData( data: PackageJSON, level = 0, unpackedSize?: number, installedBy?: string | string[] ): PackageInfo {
 
-		const normalizeRepositoryUrl = ( url?: string ): string | undefined => {
+		const lcScripts = {} as NonNullable<PackageInfo['lifeCycleScripts']>
+		if ( data.scripts ) {
 
-			if ( !url ) return undefined
+			const scripts = Object.keys( data.scripts )
+			scripts.forEach( script => {
 
-			try {
+				if ( this.LIFE_CYCLE_SCRIPTS.includes( script as keyof typeof lcScripts ) )
+					// @ts-ignore
+					lcScripts[script] = data.scripts[script]
 
-				const parsedUrl    = new URL( url )
-				parsedUrl.protocol = 'https:' // force https
-
-				if ( parsedUrl.pathname.endsWith( '.git' ) )
-					parsedUrl.pathname = parsedUrl.pathname.slice( 0, -4 )
-
-				return parsedUrl.toString()
-
-			}
-			catch ( _error ) {
-
-				return undefined
-
-			}
+			} )
 
 		}
+		const size = unpackedSize ?? 0
 		return {
 			name        : data.name,
 			version     : data.version,
@@ -74,12 +102,16 @@ export class PackageSuper {
 					: typeof data.funding === 'string'
 						? data.funding
 						: data.funding?.url,
+				npm   : `https://www.npmjs.com/package/${data.name}/v/${data.version}`,
 				unpkg : `https://unpkg.com/${data.name}@${data.version}/`,
 			},
-			unpackedSize    : unpackedSize ?? 0,
-			dependencies    : data.dependencies,
-			devDependencies : data.devDependencies,
-			installedBy     : installedBy === undefined
+			unpackedSize     : size,
+			unpackedSizeKB   : size / 1000,
+			unpackedSizeMB   : size / 1000000,
+			dependencies     : data.dependencies,
+			devDependencies  : data.devDependencies,
+			lifeCycleScripts : Object.keys( lcScripts ).length ? lcScripts : undefined,
+			installedBy      : installedBy === undefined
 				? undefined
 				: Array.isArray( installedBy )
 					? installedBy
@@ -151,20 +183,30 @@ export class PackageSuper {
 
 		for ( const [ depName, depVersion ] of Object.entries( dependencies ) ) {
 
-			const packageKey = `${depName}@${depVersion}`
-			if ( !depVersion ) continue
-			if ( this.processedPackages.has( packageKey ) ) continue
+			try {
 
-			this.processedPackages.add( packageKey )
+				const packageKey = `${depName}@${depVersion}`
+				if ( !depVersion ) continue
+				if ( this.processedPackages.has( packageKey ) ) continue
 
-			const depData = await this.getRegistryData( depName, depVersion, level, parentName )
+				this.processedPackages.add( packageKey )
 
-			packages.push( depData )
+				const depData = await this.getRegistryData( depName, depVersion, level, parentName )
 
-			if ( depData.dependencies ) {
+				packages.push( depData )
 
-				const subDeps = await this.#processDependencies( depData.dependencies, level + 1, depName )
-				packages.push( ...subDeps )
+				if ( depData.dependencies ) {
+
+					const subDeps = await this.#processDependencies( depData.dependencies, level + 1, depName )
+					packages.push( ...subDeps )
+
+				}
+
+			}
+			catch ( e ) {
+
+				if ( this.opts?.skipError ) continue
+				throw e
 
 			}
 

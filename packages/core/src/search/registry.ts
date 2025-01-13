@@ -13,14 +13,6 @@ import type { SiziumResponse } from './types'
  */
 export class SiziumRegistry extends PackageSuper {
 
-	constructor(
-		public name: string,
-	) {
-
-		super()
-
-	}
-
 	#parseName( input: string ) {
 
 		try {
@@ -60,22 +52,11 @@ export class SiziumRegistry extends PackageSuper {
 
 	async get(): Promise<SiziumResponse> {
 
-		const data        = this.#parseName( this.name )
+		const data        = this.#parseName( this.input )
 		const mainPackage = await this.getRegistryData( data.name, data.version, 0 )
 		const allPackages = await this.getPackagesData( mainPackage )
-		const totalSize   = allPackages.reduce( ( sum, pkg ) => {
 
-			const size = pkg.unpackedSize ?? 0
-			return sum + size
-
-		}, 0 )
-
-		return {
-			id         : this.name,
-			packageNum : allPackages.length,
-			size       : totalSize,
-			packages   : allPackages,
-		}
+		return this.getMainPkgData( allPackages )
 
 	}
 
