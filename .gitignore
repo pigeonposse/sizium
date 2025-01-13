@@ -57,6 +57,9 @@ packages/**/build
 /test-results
 **/test-results
 
+# WRANGLER
+.wrangler 
+
 # project 
 **/__temp__
 /__cache__
