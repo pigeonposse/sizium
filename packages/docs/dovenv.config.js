@@ -109,7 +109,7 @@ export default defineConfig(
 				},
 				nav : [
 					{
-						text : 'web',
+						text : 'Web',
 						link : core.pkg.homepage,
 					},
 				],
