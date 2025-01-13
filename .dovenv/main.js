@@ -23,7 +23,7 @@ const theme = pigeonposseMonorepoTheme( {
 			value : 'all',
 			desc  : 'env, packages etc',
 		},
-	] } }, // @dovenv/theme-pigeonposse@1.1.5 has error with scopes. this merged with default values and not override it.
+	] } },
 } )
 
 // Documetation in: "packages/docs/"
