@@ -28,8 +28,8 @@ const theme = pigeonposseMonorepoTheme( {
 
 // Documetation in: "packages/docs/"
 // remove for not make confusions
-delete theme.custom.docs
 delete theme.custom.predocs
+// delete theme.custom.docs
 
 export default defineConfig(
 	theme,

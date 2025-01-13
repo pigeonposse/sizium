@@ -44,7 +44,6 @@ jobs:
         run: |
            export npm_config_build_from_source=false
            pnpm install --no-frozen-lockfile --ignore-scripts
-           pnpm i sharp --platform=linux --arch=x64
            pnpm i -g wrangler 
 
       #########################################################################
