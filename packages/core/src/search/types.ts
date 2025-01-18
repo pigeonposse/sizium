@@ -39,11 +39,15 @@ export type PackageInfo = {
 
 export type SiziumResponse = {
 	id         : string
+	/** Number of total packages installed */
 	packageNum : number
 	/** Size in bytes */
 	size       : number
+	/** Size in kylobytes */
 	sizeKB     : number
+	/** Size in megabytes */
 	sizeMB     : number
+	/** All data from packages */
 	packages   : PackageInfo[]
 }
 

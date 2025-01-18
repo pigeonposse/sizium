@@ -1,17 +1,28 @@
 import type { Config } from 'tailwindcss'
 
 const colors = { primary : {
-	50  : '#f2f2fb',
-	100 : '#e7e7f8',
-	200 : '#d5d4f1',
-	300 : '#bdbae7',
-	400 : '#a89edb',
-	500 : '#9585cf',
-	600 : '#856cbf',
-	700 : '#735ba7',
-	800 : '#5d4c87',
-	900 : '#4d426d',
-	950 : 'rgb(17 15 24)',
+	50  : '#f0f3fd',
+	100 : '#e3e9fc',
+	200 : '#cdd6f8',
+	300 : '#afbaf2',
+	400 : '#8e97eb',
+	500 : '#7375e1',
+	600 : '#5e57d4',
+	700 : '#5148ba',
+	800 : '#423d96',
+	900 : '#393778',
+	950 : '#0a081a',
+	// 50  : '#f0f6fe',
+	// 100 : '#deebfb',
+	// 200 : '#c5def8',
+	// 300 : '#9dc9f3',
+	// 400 : '#6eaaec',
+	// 500 : '#4788e4',
+	// 600 : '#3770d9',
+	// 700 : '#2e5bc7',
+	// 800 : '#2b4ba2',
+	// 900 : '#284280',
+	// 950 : '#1d2a4e',
 } }
 
 /** @type {import('tailwindcss').Config} */
@@ -25,13 +36,13 @@ export default {
 	theme   : { extend: { colors } },
 
 	plugins : [
-		function ( { addBase } ) {
+		{ handler : ( { addBase } ) => {
 
 			addBase( { ':root' : {
 				'--theme-primary'     : colors.primary[500],
 				'--theme-primary-900' : colors.primary[900],
 			} } )
 
-		},
+		} },
 	],
 } satisfies Config

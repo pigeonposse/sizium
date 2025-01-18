@@ -42,9 +42,27 @@ Examples of use:
 ### Library
 
 ```js twoslash
+/**
+ * Get size from remote package
+ */
 import {Sizium} from 'sizium'
-const size = new Sizium('chalk@5.4.1')
-const data = await size.get()
+
+const pkg = new Sizium('chalk@5.4.1')
+const data = await pkg.get()
+
+console.log(data.size)
+```
+
+```js twoslash
+/**
+ * Get size from local package
+ */
+import {Sizium} from 'sizium'
+
+const pkg = new Sizium('./package.json')
+const data = await pkg.get()
+
+console.log(data.size)
 ```
 
 ### CLI

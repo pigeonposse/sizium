@@ -147,7 +147,7 @@ export default defineConfig(
 						},
 					},
 				},
-				styles : { color: { dark: { bgSoft: '#110e12' } } },
+				styles : { color: { secondary: '#7375e1' } },
 			}
 
 		},

@@ -43,8 +43,8 @@ deno add @sizium/core
 ```js twoslash
 import {Sizium} from '@sizium/core'
 
-const size = new Sizium('chalk@5.4.1')
-const data = await size.get()
+const pkg = new Sizium('chalk@5.4.1')
+const data = await pkg.get()
 
 console.log(data)
 ```

@@ -23,7 +23,7 @@
 		filter: 'filter'
 	}
 	async function searchPackage(name: string) {
-	  if (!name) return;
+	  
 	  
 	  loading = true;
 	  error = null;
@@ -31,7 +31,7 @@
 	  
 	  try {
 		updateURL(name);
-
+		if (!name) return;
 		const data = await getPkgData(name)
 		
 		packageInfo = data

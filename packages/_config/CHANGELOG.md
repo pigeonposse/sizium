@@ -1,5 +1,11 @@
 # @sizium/repo-config
 
+## 0.0.5
+
+### Patch Changes
+
+- Up documentation
+
 ## 0.0.4
 
 ### Patch Changes

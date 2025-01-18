@@ -90,7 +90,7 @@
   
   <style>
 	.dep-card {
-		@apply border-b border-primary-500/20 py-6 first:pt-0 last:border-0 overflow-scroll;
+		@apply border-b border-primary-500/20 py-6 first:pt-0 last:border-0 overflow-x-scroll;
 	}
 
 	.info {
@@ -103,7 +103,7 @@
 		}
 	}
 	.tooltip {
-		@apply absolute top-full left-0 mt-2 p-2 bg-primary-600 dark:bg-primary-950 rounded-lg shadow-lg z-10 hidden flex-col;
+		@apply absolute top-full left-0 mt-2 p-2 bg-primary-600 dark:bg-primary-950 rounded-lg shadow-lg z-[9999] hidden flex-col;
 
 		> span {
 			@apply text-primary-50;

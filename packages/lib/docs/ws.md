@@ -6,8 +6,22 @@
 
 ```js
 import {Sizium} from 'sizium'
-const size = new Sizium('chalk@5.4.1')
-const data = await size.get()
+
+// Get size from remote
+const pkg = new Sizium('chalk@5.4.1')
+const data = await pkg.get()
+
+console.log(data.size) // size in bytes
+```
+
+```js
+import {Sizium} from 'sizium'
+
+// Get size from local
+const pkg = new Sizium('./package.json')
+const data = await pkg.get()
+
+console.log(data.size) // size in bytes
 ```
 
 **CLI** usage:

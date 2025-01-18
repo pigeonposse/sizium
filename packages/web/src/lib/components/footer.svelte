@@ -34,7 +34,7 @@
 		<p class="text-sm pb-3">
 			© {new Date().getFullYear()} <a href="{MAIN_PKG.extra.collective.web}" target="_blank">{MAIN_PKG.extra.collective.name}</a>.
 		</p>
-		<span class="opacity-30">
+		<span class="opacity-60 dark:opacity-30">
 			v{PKG.version}
 		</span>
 	</div>
