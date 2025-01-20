@@ -14,7 +14,7 @@
 				<Github class="w-6 h-6" />
 			</a>
 			<a 
-				href={MAIN_PKG.extra.docsUrl}
+				href={MAIN_PKG.extra.docsURL}
 				target="_blank"
 				rel="noopener noreferrer"
 				title="documentation"

@@ -1,8 +1,9 @@
 <script lang="ts">
 	import type { PackageInfo } from '@sizium/core';
-  import { Github, Globe, Heart, PackageOpen } from 'lucide-svelte';
+	import { Github, Globe, Heart, PackageOpen } from 'lucide-svelte';
   
-  export let pkg: PackageInfo;
+	export let pkg: PackageInfo;
+
 </script>
 
 	{#if pkg.url.unpkg}

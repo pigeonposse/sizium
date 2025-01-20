@@ -88,7 +88,8 @@
 
   </div>
   
-  <style>
+  <style lang="postcss">
+	
 	.dep-card {
 		@apply border-b border-primary-500/20 py-6 first:pt-0 last:border-0 overflow-x-scroll;
 	}

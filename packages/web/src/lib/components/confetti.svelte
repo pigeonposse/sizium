@@ -1,7 +1,5 @@
-
-
-
 <script lang="ts">
+	
 	import Confetti from "./confetti-core.svelte"
 
 </script>

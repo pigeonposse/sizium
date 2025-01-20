@@ -26,7 +26,7 @@ deno add @sizium/node-server
 
 :::
 
-## More
+## ➕ More
 
 - 📖 [API Docs](api.md)
 - 📦 [NPM](https://www.npmjs.com/package/@sizium/node-server)

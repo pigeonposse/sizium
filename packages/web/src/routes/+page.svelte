@@ -99,7 +99,13 @@
 
 <div class="text-center mb-12 justify-center flex flex-col items-center content-center justify-items-center">
 
-	<img src="/favicon.png" alt="Sizium logo" width="80" height="80" >
+	<img 
+		src="/favicon.png" 
+		alt="Sizium logo" 
+		width="80" 
+		height="80" 
+		class="mb-5"
+	>
 	<h1 class="text-4xl font-bold mb-4">{MAIN_PKG.extra.productName.toUpperCase()}</h1>
 	<p class="subtitle">Find the true size of any <strong><a href="https://www.npmjs.com/" target="_blank">npm</a></strong> <i>package</i></p>
 </div>
@@ -180,7 +186,7 @@
 	</div>
 {/if}
 
-<style>
+<style lang="postcss">
 
 	.deps {
 		@apply mt-8;
@@ -190,6 +196,7 @@
 	}
 	.container-pkg {
 		@apply rounded-lg shadow-lg p-6 mt-4 bg-primary-100/50 dark:bg-primary-900/20 backdrop:blur-lg;
+
 		.header {
 			@apply flex sm:flex-row flex-col justify-between mb-4;
 		}

@@ -512,8 +512,8 @@ type SiziumResponse: {
 | Name | Type | Description |
 | ------ | ------ | ------ |
 | `id` | `string` | - |
-| `packageNum` | `number` | - |
-| `packages` | [`PackageInfo`](#packageinfo)[] | - |
+| `packageNum` | `number` | Number of total packages installed |
+| `packages` | [`PackageInfo`](#packageinfo)[] | All data from packages |
 | `size` | `number` | Size in bytes |
-| `sizeKB` | `number` | - |
-| `sizeMB` | `number` | - |
+| `sizeKB` | `number` | Size in kylobytes |
+| `sizeMB` | `number` | Size in megabytes |

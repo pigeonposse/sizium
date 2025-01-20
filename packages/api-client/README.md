@@ -17,11 +17,11 @@ REST API client for Sizium. Get the actual size of any local or remote package
 ## Table of contents
 
 - [🔑 Installation](#-installation)
-- [More](#more)
+- [➕ More](#-more)
 - [👨‍💻 Development](#-development)
-- [☕ Donate](#-donate)
+- [❤️ Donate](#-donate)
 - [📜 License](#-license)
-- [🐦 About us](#-about-us)
+- [✨ About us](#-about-us)
 
 
 
@@ -40,14 +40,14 @@ bun add @sizium/api-client
 deno add @sizium/api-client
 ```
 
-## More
+## ➕ More
 
-- [Core](https://sizium.pigeonposse.com/guide/core)
-- [Api](https://sizium.pigeonposse.com/guide/api)
-- [Api-client](https://sizium.pigeonposse.com/guide/api-client)
-- [Cli](https://sizium.pigeonposse.com/guide/cli)
-- [Lib](https://sizium.pigeonposse.com/guide/lib)
-- [Node-server](https://sizium.pigeonposse.com/guide/node-server)
+- 🌞 [Core](https://docs.sizium.pigeonposse.com/guide/core)
+- 📖 [Api](https://docs.sizium.pigeonposse.com/guide/api)
+- [Api-client](https://docs.sizium.pigeonposse.com/guide/api-client)
+- 🔢 [Cli](https://docs.sizium.pigeonposse.com/guide/cli)
+- [Lib](https://docs.sizium.pigeonposse.com/guide/lib)
+- [Node-server](https://docs.sizium.pigeonposse.com/guide/node-server)
 
 
 ---
@@ -57,10 +57,10 @@ deno add @sizium/api-client
 __Sizium__ is an open-source project and its development is open to anyone who wants to participate.
 
 [![Issues](https://img.shields.io/badge/Issues-grey?style=for-the-badge)](https://github.com/pigeonposse/sizium/issues)
-[![Pull requests](https://img.shields.io/badge/Pulls-grey?style=for-the-badge)](https://github.com/pigeonposse/sizium/pulls)
-[![Read more](https://img.shields.io/badge/Read%20more-grey?style=for-the-badge)](https://sizium.pigeonposse.com)
+[![Pull requests](https://img.shields.io/badge/Pulls-grey?style=for-the-badge)]({{const.pkg.repository.url}}/pulls)
+[![Read more](https://img.shields.io/badge/Read%20more-grey?style=for-the-badge)]({{const.pkg.homepage}})
 
-## ☕ Donate
+## ❤️ Donate
 
 Help us to develop more interesting things.
 
@@ -72,13 +72,15 @@ This software is licensed with __[GPL-3.0](https://github.com/pigeonposse/sizium
 
 [![Read more](https://img.shields.io/badge/Read-more-grey?style=for-the-badge)](https://github.com/pigeonposse/sizium/blob/main/LICENSE)
 
-## 🐦 About us
+## ✨ About us
 
-*PigeonPosse* is a ✨ __code development collective__ ✨ focused on creating practical and interesting tools that help developers and users enjoy a more agile and comfortable experience. Our projects cover various programming sectors and we do not have a thematic limitation in terms of projects.
+*PigeonPosse* is a __code development collective__ focused on creating practical and interesting tools that help developers and users enjoy a more agile and comfortable experience. Our projects cover various programming sectors and we do not have a thematic limitation in terms of projects.
 
 [![More](https://img.shields.io/badge/Read-more-grey?style=for-the-badge)](https://github.com/pigeonposse)
 
 ---
+
+
 
 [![Web](https://img.shields.io/badge/Web-grey?style=for-the-badge&logoColor=white)](https://pigeonposse.com)
 [![About Us](https://img.shields.io/badge/About%20Us-grey?style=for-the-badge&logoColor=white)](https://pigeonposse.com?popup=about)

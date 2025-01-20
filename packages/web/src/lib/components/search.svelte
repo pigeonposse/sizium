@@ -23,7 +23,7 @@
 	</button>
 </div>
 
-<style>
+<style lang="postcss">
 	.search-input {
 		@apply w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 pr-12;
 	}
