@@ -97,7 +97,7 @@
 	<meta name="description" content="{MAIN_PKG.description}" />
 </svelte:head>
 
-<div class="text-center mb-12 justify-center flex-col items-center content-center justify-items-center">
+<div class="text-center mb-12 justify-center flex flex-col items-center content-center justify-items-center">
 
 	<img src="/favicon.png" alt="Sizium logo" width="80" height="80" >
 	<h1 class="text-4xl font-bold mb-4">{MAIN_PKG.extra.productName.toUpperCase()}</h1>

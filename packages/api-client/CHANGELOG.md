@@ -1,5 +1,11 @@
 # @sizium/api-client
 
+## 0.0.6
+
+### Patch Changes
+
+- up web
+
 ## 0.0.5
 
 ### Patch Changes

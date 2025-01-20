@@ -5,7 +5,7 @@ import core from './const.js'
 
 const theme = pigeonposseMonorepoTheme( {
 	core,
-	lint : { staged: { '**/*.{js,ts,jsx,tsx,json}': 'pnpm --silent . lint eslint --fix --silent' } },
+	// lint : { staged: { '**/*.{js,ts,jsx,tsx,json}': 'pnpm --silent . lint eslint --fix --silent' } },
 	repo : { commit : { scopes : [
 		{
 			value : 'packages',
