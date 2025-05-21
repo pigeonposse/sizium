@@ -1,5 +1,14 @@
 # @sizium/cli
 
+## 0.0.9
+
+### Patch Changes
+
+- add pkg info
+
+- Updated dependencies []:
+  - @sizium/core@0.0.9
+
 ## 0.0.8
 
 ### Patch Changes

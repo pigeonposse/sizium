@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/api",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"description": "REST API for Sizium. Get the actual size of any local or remote package",
 	"keywords": [
 		"api",
@@ -10,13 +10,13 @@
 		"pp",
 		"size"
 	],
-	"homepage": "https://sizium.pigeonposse.com/guide/api",
+	"homepage": "https://docs.sizium.pigeonposse.com/guide/api",
 	"bugs": {
 		"url": "https://github.com/pigeonposse/sizium/issues",
 		"email": "dev@pigeonposse.com"
 	},
 	"repository": {
-		"type": "git",
+		"type": "https",
 		"url": "https://github.com/pigeonposse/sizium/",
 		"directory": "packages/api"
 	},

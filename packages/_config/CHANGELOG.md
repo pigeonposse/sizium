@@ -1,5 +1,11 @@
 # @sizium/repo-config
 
+## 0.0.9
+
+### Patch Changes
+
+- add pkg info
+
 ## 0.0.8
 
 ### Patch Changes

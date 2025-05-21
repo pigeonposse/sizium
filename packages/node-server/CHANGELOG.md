@@ -1,5 +1,14 @@
 # @sizium/node-server
 
+## 0.0.9
+
+### Patch Changes
+
+- add pkg info
+
+- Updated dependencies []:
+  - @sizium/api@0.0.9
+
 ## 0.0.8
 
 ### Patch Changes

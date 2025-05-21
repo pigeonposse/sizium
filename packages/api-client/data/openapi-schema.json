@@ -1,11 +1,11 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "0.0.7",
+    "version": "0.0.8",
     "title": "@sizium/api",
     "description": "REST API for Sizium. Get the actual size of any local or remote package",
     "contact": {
-      "url": "https://sizium.pigeonposse.com/guide/api"
+      "url": "https://docs.sizium.pigeonposse.com/guide/api"
     }
   },
   "components": {
