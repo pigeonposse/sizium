@@ -1,5 +1,15 @@
 # sizium
 
+## 0.0.8
+
+### Patch Changes
+
+- up version, fixing binaries
+
+- Updated dependencies []:
+  - @sizium/cli@0.0.8
+  - @sizium/core@0.0.8
+
 ## 0.0.7
 
 ### Patch Changes

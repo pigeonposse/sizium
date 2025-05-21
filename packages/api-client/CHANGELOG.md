@@ -1,5 +1,11 @@
 # @sizium/api-client
 
+## 0.0.8
+
+### Patch Changes
+
+- up version, fixing binaries
+
 ## 0.0.7
 
 ### Patch Changes

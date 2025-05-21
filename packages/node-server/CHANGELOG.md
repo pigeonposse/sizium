@@ -1,5 +1,14 @@
 # @sizium/node-server
 
+## 0.0.8
+
+### Patch Changes
+
+- up version, fixing binaries
+
+- Updated dependencies []:
+  - @sizium/api@0.0.8
+
 ## 0.0.7
 
 ### Patch Changes

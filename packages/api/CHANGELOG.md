@@ -1,5 +1,14 @@
 # @sizium/api
 
+## 0.0.8
+
+### Patch Changes
+
+- up version, fixing binaries
+
+- Updated dependencies []:
+  - @sizium/core@0.0.8
+
 ## 0.0.7
 
 ### Patch Changes
