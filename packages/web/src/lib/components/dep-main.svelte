@@ -1,37 +1,36 @@
 <script lang="ts">
-    import type { SiziumResponse } from '@sizium/core';
 
-	import { roundToTwoDecimals } from '$lib/utils';
-	
-    export let data: SiziumResponse;
+	import { roundToTwoDecimals } from '$lib/utils'
 
-    
+	import type { SiziumResponse } from '@sizium/core'
+
+	export let data: SiziumResponse
 
 </script>
 
 <div class="cards">
-	<div >
+	<div>
 		<div>
 			<p class="title">Total Size</p>
-			<p class="value">{roundToTwoDecimals(data.sizeMB)}mb <span>({roundToTwoDecimals(data.sizeKB)}kb)</span></p>
+			<p class="value">{roundToTwoDecimals( data.sizeMB )}mb <span>({roundToTwoDecimals( data.sizeKB )}kb)</span></p>
 		</div>
-		
-		<div >
+
+		<div>
 			<p class="title">Unpacked Size</p>
-			<p class="value">{roundToTwoDecimals(data.packages[0].unpackedSizeMB)}mb <span>({roundToTwoDecimals(data.packages[0].unpackedSizeKB)}kb)</span></p>
+			<p class="value">{roundToTwoDecimals( data.packages[0].unpackedSizeMB )}mb <span>({roundToTwoDecimals( data.packages[0].unpackedSizeKB )}kb)</span></p>
 		</div>
 	</div>
-	
-	<div >
-		<div >
+
+	<div>
+		<div>
 			<p class="title">Packages installed</p>
-			<p class="value">{data.packageNum === 1 ? 0 : data.packageNum }</p>
+			<p class="value">{data.packageNum === 1 ? 0 : data.packageNum}</p>
 		</div>
-		
-		<div >
+
+		<div>
 			<p class="title">Module Type</p>
 			<p class="value">
-				{data.packages[0].isESM ? 'ESM' : (data.packages[0].isCommonJS ? 'CommonJS' : 'Unknown')}
+				{data.packages[0].isESM ? 'ESM' : ( data.packages[0].isCommonJS ? 'CommonJS' : 'Unknown' )}
 			</p>
 		</div>
 	</div>
@@ -60,5 +59,5 @@
 			}
 		}
 	}
-	
+
 </style>

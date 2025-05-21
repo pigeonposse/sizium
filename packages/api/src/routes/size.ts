@@ -1,8 +1,8 @@
 import { Sizium } from '@sizium/core'
-import { Route }  from 'backan'
+import { App }    from 'backan'
 
 const id             = 'size'
-const route          = new Route( { path: id } )
+const route          = new App( )
 const schemaResponse =  route.validation.object( {} )
 
 route.add(
@@ -37,4 +37,8 @@ route.add(
 
 	},
 )
-export default route
+
+export {
+	id,
+	route,
+}

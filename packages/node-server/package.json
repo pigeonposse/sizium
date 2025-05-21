@@ -1,14 +1,14 @@
 {
 	"name": "@sizium/node-server",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "Node.js server for Sizium REST API. Get the actual size of any local or remote package",
 	"keywords": [
-		"pp",
+		"node-server",
+		"package",
 		"pigeonposse",
 		"pkg-size",
-		"package",
-		"size",
-		"node-server"
+		"pp",
+		"size"
 	],
 	"homepage": "https://sizium.pigeonposse.com/guide/node-server",
 	"bugs": {
@@ -17,7 +17,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/pigeonposse/sizium",
+		"url": "https://github.com/pigeonposse/sizium/",
 		"directory": "packages/node-server"
 	},
 	"funding": {
@@ -31,16 +31,6 @@
 		"url": "https://github.com/angelespejo"
 	},
 	"type": "module",
-	"exports": {
-		".": {
-			"types": "./dist/main.d.ts",
-			"import": "./dist/main.mjs",
-			"require": "./dist/main.cjs"
-		}
-	},
-	"main": "dist/main.cjs",
-	"module": "dist/main.mjs",
-	"types": "dist/main.d.ts",
 	"bin": {
 		"sizium-server": "dist/main.mjs"
 	},
@@ -53,7 +43,7 @@
 		"test": "playwright test"
 	},
 	"dependencies": {
-		"@backan/server": "0.1.4",
+		"@backan/server": "0.2.8",
 		"@sizium/api": "workspace:*"
 	},
 	"devDependencies": {

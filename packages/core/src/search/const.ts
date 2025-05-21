@@ -5,7 +5,7 @@ export const ERROR_ID = {
 	GETTING_LOCAL_DATA    : 'GETTING_LOCAL_DATA',
 } as const
 
-export const  LIFE_CYCLE_SCRIPTS = [
+export const LIFE_CYCLE_SCRIPTS = [
 	'preinstall',
 	'install',
 	'postinstall',

@@ -1,5 +1,6 @@
 /**
  * Test files.
+ *
  * @description Test files.
  * @see https://playwright.dev/docs/api/class-test
  */
@@ -9,11 +10,13 @@ import {
 	test,
 } from '@playwright/test'
 
-test( 'Server is healthy', async ( { page } ) => {
+test( 'Server is working', async ( { page } ) => {
 
-	const response = await page.request.get( '/health' )
+	const pkgName  = 'chalk'
+	const response = await page.request.get( '/size?input=' + pkgName )
 	expect( response.ok() ).toBe( true )
+
 	const responseData = await response.json()
-	expect( responseData.ok ).toBe( true )
+	expect( responseData.id ).toBe( pkgName )
 
 } )

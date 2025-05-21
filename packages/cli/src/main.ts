@@ -16,7 +16,20 @@ import {
 } from './const'
 import { printHelp } from './help'
 
-const run = async () => {
+/**
+ * Executes the CLI command based on the provided flags and options.
+ *
+ * This function processes the command-line arguments and executes the appropriate
+ * action based on the specified flags. It supports options for displaying help,
+ * version information, input processing, and execution time measurement.
+ *
+ *
+ * The function uses the `Sizium` class to retrieve package size information
+ * based on the input provided. It outputs the result in different formats
+ * depending on the specified resolution type.
+ */
+
+export const run = async () => {
 
 	const res = ( getFlagValue( OPTIONS.RES.key ) || getFlagValue( OPTIONS.RES.alias, true ) ) as typeof RES_TYPE[keyof typeof RES_TYPE] | undefined
 
@@ -24,9 +37,12 @@ const run = async () => {
 		HELP    : existsFlag( GLOBBAL_OPTIONS.HELP.key ) || existsFlag( GLOBBAL_OPTIONS.HELP.alias, true ),
 		VERSION : existsFlag( GLOBBAL_OPTIONS.VERSION.key ) || existsFlag( GLOBBAL_OPTIONS.VERSION.alias, true ),
 		INPUT   : getFlagValue( OPTIONS.INPUT.key ) || getFlagValue( OPTIONS.INPUT.alias, true ),
+		TIME    : existsFlag( GLOBBAL_OPTIONS.TIME.key ),
 		RES     : res && Object.values( RES_TYPE ).includes( res ) ? res : undefined,
 		NONE    : noFlags(),
 	}
+
+	if ( FLAGS.TIME ) console.time( 'Execution Time' )
 
 	if ( FLAGS.HELP ) printHelp( name, description, documentationURL, version )
 	else if ( FLAGS.VERSION ) console.log( version )
@@ -43,5 +59,6 @@ const run = async () => {
 	}
 	else printHelp( name, description, documentationURL, version )
 
+	if ( FLAGS.TIME ) console.timeEnd( 'Execution Time' )
+
 }
-run()

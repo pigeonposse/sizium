@@ -14,6 +14,7 @@ export default defineConfig( { custom : { favicon : {
 			input  : joinPath( core.workspaceDir, 'docs', 'public', 'logo.png' ),
 			output : joinPath( process.cwd(), 'static', 'favicon.png' ),
 		} )
+		console.log( 'Copied favicon!' )
 
 	},
 } } } )

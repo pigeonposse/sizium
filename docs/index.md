@@ -15,7 +15,7 @@ hero:
       link: /guide
     - theme: alt
       text: View on GitHub
-      link: https://github.com/pigeonposse/sizium
+      link: https://github.com/pigeonposse/sizium/
 features:
   - title: Get started
     icon: 🏁

@@ -7,7 +7,7 @@
 [![Instagram](https://img.shields.io/badge/Instagram-black?style=for-the-badge&logoColor=white&logo=instagram)](https://www.instagram.com/pigeon.posse/)
 [![Medium](https://img.shields.io/badge/Medium-black?style=for-the-badge&logoColor=white&logo=medium)](https://medium.com/@pigeonposse)
 
-[![BANNER](https://github.com/pigeonposse/sizium/blob/main/docs/public/banner.png?raw=true)](https://sizium.pigeonposse.com)
+[![BANNER](https://github.com/pigeonposse/sizium/blob/main/docs/public/banner.png?raw=true)](https://sizium.pigeonposse.com/guide/lib)
 
 [![License](https://img.shields.io/github/license/pigeonposse/sizium?style=for-the-badge&color=green&logoColor=white)](/LICENSE)
 [![Version](https://img.shields.io/npm/v/sizium?style=for-the-badge&color=blue&label=Version)](https://www.npmjs.com/package/sizium)
@@ -57,8 +57,8 @@ deno add @sizium/node-server
 __Sizium__ is an open-source project and its development is open to anyone who wants to participate.
 
 [![Issues](https://img.shields.io/badge/Issues-grey?style=for-the-badge)](https://github.com/pigeonposse/sizium/issues)
-[![Pull requests](https://img.shields.io/badge/Pulls-grey?style=for-the-badge)]({{const.pkg.repository.url}}/pulls)
-[![Read more](https://img.shields.io/badge/Read%20more-grey?style=for-the-badge)]({{const.pkg.homepage}})
+[![Pull requests](https://img.shields.io/badge/Pulls-grey?style=for-the-badge)](https://github.com/pigeonposse/sizium/pulls)
+[![Read more](https://img.shields.io/badge/Read%20more-grey?style=for-the-badge)](https://sizium.pigeonposse.com)
 
 ## ❤️ Donate
 

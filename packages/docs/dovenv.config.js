@@ -21,7 +21,7 @@ const ICON = {
 export default defineConfig(
 	pigeonposseTheme( {
 		core,
-		docs : async config => {
+		docs : async utils => {
 
 			const sidebar = [
 				{
@@ -84,14 +84,13 @@ export default defineConfig(
 			]
 
 			const data = await docs.getPkgConfig(
-				// @ts-ignore
-				config?.const?.pkg || {},
+				utils.pkg || {},
 			)
 
 			return {
 				...data,
 				input     : '../../docs',
-				output    : './build', // because "dovenv@1.1.5" not work with ../.. routes
+				output    : './build',
 				version   : core.corePkg?.version,
 				vitepress : {
 					ignoreDeadLinks : true,
@@ -113,29 +112,6 @@ export default defineConfig(
 						link : core.pkg.homepage,
 					},
 				],
-				pwa : { manifest : { icons : [
-					{
-						src   : 'pwa-64x64.png',
-						sizes : '64x64',
-						type  : 'image/png',
-					},
-					{
-						src   : 'pwa-192x192.png',
-						sizes : '192x192',
-						type  : 'image/png',
-					},
-					{
-						src   : 'pwa-512x512.png',
-						sizes : '512x512',
-						type  : 'image/png',
-					},
-					{
-						src     : 'maskable-icon-512x512.png',
-						sizes   : '512x512',
-						type    : 'image/png',
-						purpose : 'maskable',
-					},
-				] } },
 				download : {
 					groups : { bin: 'Executables' },
 					items  : {
@@ -154,10 +130,13 @@ export default defineConfig(
 	} ),
 	{ custom : { predocs : {
 		desc : 'build docs pages',
-		fn   : async ( { config } ) => {
+		fn   : async ( { utils } ) => {
 
-			// console.log( 'HELLO', config )
-			const docs = new Predocs( undefined, config )
+			const docs = new Predocs( { utils } )
+			const log  = docs.utils.logGroup( 'Predocs' )
+
+			log.info( '🏁', 'Starting...' )
+			log.step()
 
 			await docs.setIndexFile( {
 				noFeatures : true,
@@ -197,6 +176,9 @@ export default defineConfig(
 			] } )
 
 			await docs.setPkgFiles()
+
+			log.step()
+			log.success( '✨', 'Done!' )
 
 		},
 	} } },

@@ -181,13 +181,13 @@ export class PackageSuper {
 
 		const packages: PackageInfo[] = []
 
-		for ( const [ depName, depVersion ] of Object.entries( dependencies ) ) {
+		const promises = Object.entries( dependencies ).map( async ( [ depName, depVersion ] ) => {
 
 			try {
 
 				const packageKey = `${depName}@${depVersion}`
-				if ( !depVersion ) continue
-				if ( this.processedPackages.has( packageKey ) ) continue
+				if ( !depVersion ) return
+				if ( this.processedPackages.has( packageKey ) ) return
 
 				this.processedPackages.add( packageKey )
 
@@ -205,13 +205,14 @@ export class PackageSuper {
 			}
 			catch ( e ) {
 
-				if ( this.opts?.skipError ) continue
+				if ( this.opts?.skipError ) return
 				throw e
 
 			}
 
-		}
+		} )
 
+		await Promise.all( promises )
 		return packages
 
 	}

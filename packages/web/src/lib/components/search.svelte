@@ -1,6 +1,7 @@
 <script lang="ts">
 
-	import { Search } from "lucide-svelte";
+	import { Search } from 'lucide-svelte'
+
 	export let value = ''
 	export let placeholder = ''
 	export let size: 'medium' | 'small' = 'medium'
@@ -8,16 +9,16 @@
 </script>
 <div class="relative">
 	<input
-		type="text"
-		bind:value={value}
-		{placeholder}
 		class="search-input {size}"
 		aria-label="Package name"
+		{placeholder}
+		type="text"
+		bind:value={value}
 	/>
-	<button 
-		type="submit"
+	<button
 		class="absolute right-2 top-1/2 -translate-y-1/2 p-2"
 		aria-label="Search"
+		type="submit"
 	>
 		<Search class="w-5 h-5" />
 	</button>

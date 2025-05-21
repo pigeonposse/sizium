@@ -1,5 +1,6 @@
 /**
  * Playwright config.
+ *
  * @description Playwright config.
  * @see https://playwright.dev/docs/api/class-testconfig
  */

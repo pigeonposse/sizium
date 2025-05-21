@@ -1,5 +1,14 @@
 # @sizium/node-server
 
+## 0.0.7
+
+### Patch Changes
+
+- improve performance
+
+- Updated dependencies []:
+  - @sizium/api@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes

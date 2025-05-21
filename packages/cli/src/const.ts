@@ -39,6 +39,7 @@ export const GLOBBAL_OPTIONS = {
 		key   : 'version',
 		alias : 'v',
 	},
+	TIME : { key: 'time' },
 	HELP : {
 		key   : 'help',
 		alias : 'h',

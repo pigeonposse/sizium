@@ -2,7 +2,10 @@ import {
 	readFile,
 	stat,
 } from 'node:fs/promises'
-import path from 'node:path'
+import {
+	join,
+	resolve,
+} from 'node:path'
 
 import { PackageSuper } from './super'
 import {
@@ -17,6 +20,7 @@ import type {
 
 /**
  * Represents the class to get the `true` package size from **local** enviroment.
+ *
  * @example
  * // Directory input
  * const size = new SiziumLocal( './' )
@@ -58,10 +62,10 @@ export class SiziumLocal extends PackageSuper {
 			}
 			else {
 
-				let filePath = path.resolve( this.input )
+				let filePath = resolve( this.input )
 				const stats  = await stat( filePath )
 
-				if ( stats.isDirectory() ) filePath = path.join( filePath, 'package.json' )
+				if ( stats.isDirectory() ) filePath = join( filePath, 'package.json' )
 
 				const content = await readFile( filePath, 'utf-8' )
 				return JSON.parse( content )

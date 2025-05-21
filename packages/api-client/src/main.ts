@@ -1,4 +1,4 @@
-import { createClient as createClientCore } from '@backan/builder'
+import { createClient as createClientCore } from '@backan/client'
 
 import type { paths } from '../data/openapi-schema.d.ts'
 

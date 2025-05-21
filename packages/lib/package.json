@@ -1,12 +1,12 @@
 {
 	"name": "sizium",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "Get the actual size of any local or remote package",
 	"keywords": [
-		"pp",
+		"package",
 		"pigeonposse",
 		"pkg-size",
-		"package",
+		"pp",
 		"size"
 	],
 	"homepage": "https://sizium.pigeonposse.com/guide/lib",
@@ -16,7 +16,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/pigeonposse/sizium",
+		"url": "https://github.com/pigeonposse/sizium/",
 		"directory": "packages/lib"
 	},
 	"funding": {
@@ -32,9 +32,14 @@
 	"type": "module",
 	"exports": {
 		".": {
-			"types": "./dist/main.d.ts",
-			"import": "./dist/main.mjs",
-			"require": "./dist/main.cjs"
+			"import": {
+				"types": "./dist/main.d.mts",
+				"default": "./dist/main.mjs"
+			},
+			"require": {
+				"types": "./dist/main.d.cts",
+				"default": "./dist/main.cjs"
+			}
 		}
 	},
 	"main": "dist/main.cjs",

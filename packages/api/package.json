@@ -1,14 +1,14 @@
 {
 	"name": "@sizium/api",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "REST API for Sizium. Get the actual size of any local or remote package",
 	"keywords": [
-		"pp",
+		"api",
+		"package",
 		"pigeonposse",
 		"pkg-size",
-		"package",
-		"size",
-		"api"
+		"pp",
+		"size"
 	],
 	"homepage": "https://sizium.pigeonposse.com/guide/api",
 	"bugs": {
@@ -17,7 +17,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/pigeonposse/sizium",
+		"url": "https://github.com/pigeonposse/sizium/",
 		"directory": "packages/api"
 	},
 	"funding": {
@@ -49,10 +49,10 @@
 	},
 	"dependencies": {
 		"@sizium/core": "workspace:*",
-		"backan": "0.1.4"
+		"backan": "0.2.8"
 	},
 	"devDependencies": {
-		"@hono/vite-dev-server": "0.18.0",
+		"@hono/vite-dev-server": "0.19.1",
 		"@sizium/repo-config": "workspace:*"
 	},
 	"publishConfig": {

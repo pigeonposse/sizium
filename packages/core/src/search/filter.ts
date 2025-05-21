@@ -14,6 +14,7 @@ export class SiziumFilter {
 
 	/**
 	 * Sorts the packages by their unpacked size in descending order.
+	 *
 	 * @returns {Promise<PackageInfo[]>} A promise that resolves to an array of `PackageInfo` sorted by unpacked size.
 	 * @throws An error if `this.pkg` is undefined.
 	 */
@@ -26,8 +27,9 @@ export class SiziumFilter {
 
 	/**
 	 * Sorts the packages alphabetically by name.
-	 * @param {'atoz' | 'ztoa'}type - The sorting order, either `'atoz'` (A-Z) or `'ztoa'` (Z-A). Default is `'atoz'`.
-	 * @returns {Promise<PackageInfo[]>} A promise that resolves to an array of `PackageInfo` sorted by name.
+	 *
+	 * @param   {'atoz' | 'ztoa'}        type - The sorting order, either `'atoz'` (A-Z) or `'ztoa'` (Z-A). Default is `'atoz'`.
+	 * @returns {Promise<PackageInfo[]>}      A promise that resolves to an array of `PackageInfo` sorted by name.
 	 * @throws An error if `this.pkg` is undefined.
 	 */
 	async byName( type: 'atoz' | 'ztoa' = 'atoz' ): Promise<PackageInfo[]> {
@@ -41,6 +43,7 @@ export class SiziumFilter {
 
 	/**
 	 * Sorts the packages by the total number of dependencies (both dependencies and devDependencies) in descending order.
+	 *
 	 * @returns {Promise<PackageInfo[]>} A promise that resolves to an array of `PackageInfo` sorted by total dependency size.
 	 * @throws An error if `this.pkg` is undefined.
 	 */
@@ -56,6 +59,7 @@ export class SiziumFilter {
 
 	/**
 	 * Sorts the packages by the number of direct dependencies in descending order.
+	 *
 	 * @returns {Promise<PackageInfo[]>} A promise that resolves to an array of `PackageInfo` sorted by the number of dependencies.
 	 * @throws An error if `this.pkg` is undefined.
 	 */
@@ -71,6 +75,7 @@ export class SiziumFilter {
 	/**
 	 * Sorts the packages by their dependency level in ascending order.
 	 * The dependency level indicates how "deep" the package is in the dependency tree.
+	 *
 	 * @returns {Promise<PackageInfo[]>} A promise that resolves to an array of `PackageInfo` sorted by dependency level.
 	 * @throws An error if `this.pkg` is undefined.
 	 */

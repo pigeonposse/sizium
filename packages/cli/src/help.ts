@@ -36,6 +36,7 @@ ${bold( 'Global options:' )}
 
   ${yellow( '-h, --help' )}             ${dim( 'Show help message' )}
   ${yellow( '-v, --version' )}          ${dim( 'Show version' )}
+  ${yellow( '--time' )}                 ${dim( 'Show timeout' )}
 
 ${bold( 'Examples:' )}
 

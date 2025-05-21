@@ -1,53 +1,60 @@
 <script lang="ts">
-	import type { PackageInfo } from '@sizium/core';
-	import { Github, Globe, Heart, PackageOpen } from 'lucide-svelte';
-  
-	export let pkg: PackageInfo;
+
+	import {
+		Github,
+		Globe,
+		Heart,
+		PackageOpen,
+	} from 'lucide-svelte'
+
+	import type { PackageInfo } from '@sizium/core'
+
+	export let pkg: PackageInfo
 
 </script>
 
-	{#if pkg.url.unpkg}
-		<a
+{#if pkg.url.unpkg}
+	<a
+		class="p-2"
 		href={pkg.url.unpkg}
-		target="_blank"
 		rel="noopener noreferrer"
-		class="p-2"
+		target="_blank"
 		title="Repository"
-		>
+	>
 		<PackageOpen class="w-5 h-5" />
-		</a>
-	{/if}
+	</a>
+{/if}
 
-	{#if pkg.url.repository}
-	  <a
+{#if pkg.url.repository}
+	<a
+		class="p-2"
 		href={pkg.url.repository}
-		target="_blank"
 		rel="noopener noreferrer"
-		class="p-2"
+		target="_blank"
 		title="Repository"
-	  >
+	>
 		<Github class="w-5 h-5" />
-	  </a>
-	{/if}
-	{#if pkg.url.homepage}
-	  <a
+	</a>
+{/if}
+{#if pkg.url.homepage}
+	<a
+		class="p-2"
 		href={pkg.url.homepage}
-		target="_blank"
 		rel="noopener noreferrer"
-		class="p-2"
+		target="_blank"
 		title="Homepage"
-	  >
+	>
 		<Globe class="w-5 h-5" />
-	  </a>
-	{/if}
-	{#if pkg.url.funding}
-	  <a
-		href={pkg.url.funding}
-		target="_blank"
-		rel="noopener noreferrer"
+	</a>
+{/if}
+{#if pkg.url.funding}
+	<a
 		class="p-2"
+		href={pkg.url.funding}
+		rel="noopener noreferrer"
+		target="_blank"
 		title="Sponsor"
-	  >
+	>
 		<Heart class="w-5 h-5" />
-	  </a>
-	{/if}
+	</a>
+{/if}

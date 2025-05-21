@@ -9,6 +9,7 @@ export type * from './search/types'
 
 /**
  * Represents the main class for handling package size.
+ *
  * @example
  * const size = new Sizium( 'chalk' )
  * const data = await size.get()
@@ -62,8 +63,9 @@ export class Sizium {
 	/**
 	 * Retrieves the package information based on the input.
 	 * It uses either the registry or local search mechanism depending on the input type.
-	 * @see https://sizium.pigeonposse.com/guide/core/api#siziumresponse
+	 *
 	 * @returns {Promise<SiziumResponse>} A promise that resolves with the package response data.
+	 * @see https://sizium.pigeonposse.com/guide/core/api#siziumresponse
 	 */
 	async get() {
 
@@ -83,8 +85,9 @@ export class Sizium {
 
 /**
  * Retrieves the size information of a given package.
- * @param {string} input  - The input string representing a package name, path, or URL.
- * @returns {Promise<SiziumResponse>} A promise that resolves with the package response data.
+ *
+ * @param   {string}                  input - The input string representing a package name, path, or URL.
+ * @returns {Promise<SiziumResponse>}       A promise that resolves with the package response data.
  * @example
  * const data = await getPackageSize( 'chalk' )
  *

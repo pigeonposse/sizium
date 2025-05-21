@@ -30,6 +30,7 @@ export default {
 	content : [ './src/**/*.{html,js,svelte,ts}' ],
 	/**
 	 * Colors of interface.
+	 *
 	 * @see https://uicolors.app/create
 	 * @see https://www.tints.dev/
 	 */

@@ -1,123 +1,18 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "0.0.6",
+    "version": "0.0.7",
     "title": "@sizium/api",
-    "description": "REST API for Sizium. Get the actual size of any local or remote package"
+    "description": "REST API for Sizium. Get the actual size of any local or remote package",
+    "contact": {
+      "url": "https://sizium.pigeonposse.com/guide/api"
+    }
   },
   "components": {
     "schemas": {},
     "parameters": {}
   },
   "paths": {
-    "/health": {
-      "get": {
-        "summary": "Check API health status",
-        "description": "Check if your API goes into trouble.",
-        "tags": [
-          "health"
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully fetched data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    }
-                  },
-                  "required": [
-                    "ok"
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "enum": [
-                        400
-                      ]
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "error": {
-                      "type": "object",
-                      "properties": {}
-                    },
-                    "help": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "id",
-                    "message",
-                    "error",
-                    "help"
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "enum": [
-                        500
-                      ]
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "error": {
-                      "type": "object",
-                      "properties": {}
-                    },
-                    "help": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "id",
-                    "message",
-                    "error",
-                    "help"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/size": {
       "get": {
         "summary": "Get Package size data",

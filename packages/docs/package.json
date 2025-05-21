@@ -3,12 +3,12 @@
 	"private": true,
 	"description": "Documentation page for sizium",
 	"keywords": [
+		"docs",
 		"pigeonposse",
 		"pp",
-		"sizium",
-		"docs"
+		"sizium"
 	],
-	"homepage": "https://sizium.pigeonposse.com",
+	"homepage": "https://docs.sizium.pigeonposse.com",
 	"bugs": {
 		"url": "https://github.com/pigeonposse/sizium/issues",
 		"email": "dev@pigeonposse.com"
@@ -26,8 +26,8 @@
 	"type": "module",
 	"scripts": {
 		"build": "pnpm build:pre && pnpm build:web",
-		"build:pre": "dovenv predocs",
-		"build:web": "dovenv docs build",
+		"build:pre": "dovenv predocs --silent",
+		"build:web": "dovenv docs build --silent",
 		"dev": "dovenv docs dev",
 		"preview": "dovenv docs preview",
 		"test": "playwright test"

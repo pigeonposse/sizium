@@ -4,6 +4,7 @@ import type { SiziumResponse } from './types'
 
 /**
  * Represents the class to get the `true` package size from the npm registry URL.
+ *
  * @example
  * const size = new SiziumRegistry( 'chalk' )
  * const data = await size.get()

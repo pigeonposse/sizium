@@ -1,4 +1,4 @@
-/** 
+/**
 * *****************************************************************************
 * vscode config.
 * *****************************************************************************
@@ -9,20 +9,21 @@
 * *****************************************************************************
 */
 {
-    "files.autoSave": "onFocusChange",
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
-    },
-    "eslint.validate": [
-        "javascript", 
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "json", 
-        "jsonc", 
-        "json5",
-        "yaml",
-        "toml"
-    ],
-    "javascript.updateImportsOnFileMove.enabled": "always"
+	"files.autoSave": "onFocusChange",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"svelte",
+		"json",
+		"jsonc",
+		"json5",
+		"yaml",
+		"toml"
+	],
+	"javascript.updateImportsOnFileMove.enabled": "always"
 }

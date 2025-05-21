@@ -1,5 +1,11 @@
 # @sizium/api-client
 
+## 0.0.7
+
+### Patch Changes
+
+- improve performance
+
 ## 0.0.6
 
 ### Patch Changes

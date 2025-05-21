@@ -1,12 +1,12 @@
 {
 	"name": "@sizium/core",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "Get the actual size of any local or remote package",
 	"keywords": [
-		"pp",
+		"package",
 		"pigeonposse",
 		"pkg-size",
-		"package",
+		"pp",
 		"size"
 	],
 	"homepage": "https://sizium.pigeonposse.com/guide/core",
@@ -16,7 +16,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/pigeonposse/sizium",
+		"url": "https://github.com/pigeonposse/sizium/",
 		"directory": "packages/core"
 	},
 	"funding": {
@@ -32,19 +32,34 @@
 	"type": "module",
 	"exports": {
 		".": {
-			"types": "./dist/main.d.ts",
-			"import": "./dist/main.mjs",
-			"require": "./dist/main.cjs"
+			"import": {
+				"types": "./dist/main.d.mts",
+				"default": "./dist/main.mjs"
+			},
+			"require": {
+				"types": "./dist/main.d.cts",
+				"default": "./dist/main.cjs"
+			}
 		},
 		"./local": {
-			"types": "./dist/search/local.d.ts",
-			"import": "./dist/search/local.mjs",
-			"require": "./dist/search/local.cjs"
+			"import": {
+				"types": "./dist/search/local.d.mts",
+				"default": "./dist/search/local.mjs"
+			},
+			"require": {
+				"types": "./dist/search/local.d.cts",
+				"default": "./dist/search/local.cjs"
+			}
 		},
 		"./registry": {
-			"types": "./dist/search/registry.d.ts",
-			"import": "./dist/search/registry.mjs",
-			"require": "./dist/search/registry.cjs"
+			"import": {
+				"types": "./dist/search/registry.d.mts",
+				"default": "./dist/search/registry.mjs"
+			},
+			"require": {
+				"types": "./dist/search/registry.d.cts",
+				"default": "./dist/search/registry.cjs"
+			}
 		}
 	},
 	"main": "dist/main.cjs",
@@ -58,12 +73,12 @@
 		"dev": "tsx examples/main.ts"
 	},
 	"dependencies": {
-		"semver": "7.6.3"
+		"semver": "7.7.2"
 	},
 	"devDependencies": {
 		"@schemastore/package": "0.0.10",
 		"@sizium/repo-config": "workspace:*",
-		"@types/semver": "7.5.8"
+		"@types/semver": "7.7.0"
 	},
 	"publishConfig": {
 		"access": "public",
