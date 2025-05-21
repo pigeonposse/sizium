@@ -198,7 +198,7 @@ jobs:
           draft: false
           prerelease: false
           allowUpdates: true
-          artifacts: "./build/compress/*.zip"
+          artifacts: "./packages/cli/build/compress/*.zip"
         #   body: |
         #     ${{steps.pkg.outputs.release_body}}
           omitBodyDuringUpdate: true

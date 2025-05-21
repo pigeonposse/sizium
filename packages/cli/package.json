@@ -55,6 +55,7 @@
 	],
 	"scripts": {
 		"build": "pnpm build:lib",
+		"build:bin": "binarium -c build.binarium.js node",
 		"build:lib": "unbuild",
 		"dev": "tsx src/main.ts"
 	},
