@@ -46,7 +46,7 @@
 		"build:docs": "pnpm + docs build",
 		"build:lib": "pnpm + cli build && pnpm ++ sizium build",
 		"build:web": "pnpm + web build",
-		"lint:commit": "dovenv lint commit --silent",
+		"lint:commit": "dovenv lint --silent commitlint",
 		"lint:eslint": "dovenv lint eslint --silent",
 		"lint:pkg": "dovenv lint custom -k pkg --silent",
 		"lint:staged": "dovenv lint staged --silent",
