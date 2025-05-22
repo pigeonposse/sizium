@@ -175,7 +175,7 @@ export default defineConfig(
 				'plugin',
 			] } )
 
-			await docs.setPkgFiles( { skip: { pkg: true } } )
+			await docs.setPackageFiles( { packages: false } )
 
 			log.step()
 			log.success( '✨', 'Done!' )

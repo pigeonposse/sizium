@@ -1,5 +1,11 @@
 # @sizium/core
 
+## 0.0.10
+
+### Patch Changes
+
+- upd docs
+
 ## 0.0.9
 
 ### Patch Changes
