@@ -1,5 +1,14 @@
 # @sizium/cli
 
+## 0.0.11
+
+### Patch Changes
+
+- update cli output
+
+- Updated dependencies []:
+  - @sizium/core@0.0.11
+
 ## 0.0.10
 
 ### Patch Changes

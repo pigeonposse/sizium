@@ -1,6 +1,11 @@
 import { Sizium } from '@sizium/core'
 
 import {
+	bold,
+	dim,
+	underline,
+} from './_shared/color'
+import {
 	existsFlag,
 	getFlagValue,
 	noFlags,
@@ -52,7 +57,52 @@ export const run = async () => {
 		const data = await size.get()
 
 		if ( FLAGS.RES === RES_TYPE.SIZE ) console.log( `${data.sizeKB}kb | ${data.sizeMB}mb` )
-		else if ( FLAGS.RES === RES_TYPE.INFO ) console.log( `Name: ${data.id}\nPackages: ${data.packageNum}\nSize: ${data.sizeKB}kb | ${data.sizeMB}mb` )
+		else if ( FLAGS.RES === RES_TYPE.INFO || FLAGS.RES === RES_TYPE.MIN_INFO ) {
+
+			console.log( underline( bold( data.id ) ) + '\n' )
+			const pkgInfo = [
+				[ 'Size KB', parseFloat( data.sizeKB.toFixed( 2 ) ) ],
+				[ 'Size MB', parseFloat( data.sizeMB.toFixed( 2 ) ) ],
+				[ 'Packages installed', data.packageNum ],
+			]
+			console.log( pkgInfo.map( ( [ name, value ] ) => `${name}: ${dim( value )}` ).join( '\n' ) + '\n' )
+
+			if ( FLAGS.RES === RES_TYPE.MIN_INFO ) return
+
+			const info: { [name: string]: {
+				kb     : number
+				mb     : number
+				level? : number
+			} } = {}
+			for ( let i = 0; i < data.packages.length; i++ ) {
+
+				const pkg      = data.packages[i]
+				info[pkg.name] = {
+					kb    : parseFloat( pkg.unpackedSizeKB.toFixed( 2 ) ),
+					mb    : parseFloat( pkg.unpackedSizeMB.toFixed( 2 ) ),
+					level : pkg.level,
+				}
+
+			}
+
+			if ( Object.keys( info ).length ) {
+
+				const sorted = Object.entries( info )
+					.sort( ( a, b ) => b[1].kb - a[1].kb )
+					.reduce( ( acc, [ name, data ] ) => {
+
+						acc[name] = data
+						return acc
+
+					}, {} as typeof info )
+
+				console.table( sorted )
+
+			}
+
+			console.log( `\nMore details: `, dim( `https://sizium.pigeonposse.com/?s=${data.id}` ) )
+
+		}
 		else if ( FLAGS.RES === RES_TYPE.JSON ) console.log( JSON.stringify( data ) )
 		else console.dir( data, { depth: Infinity } )
 

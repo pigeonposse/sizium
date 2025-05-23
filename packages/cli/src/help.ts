@@ -1,9 +1,5 @@
-import color from 'picocolors'
 
-import { exit }     from './_shared/process'
-import { RES_TYPE } from './const'
-
-const {
+import {
 	bold,
 	green,
 	dim,
@@ -12,7 +8,9 @@ const {
 	inverse,
 	magenta,
 	underline,
-} = color
+} from './_shared/color'
+import { exit }     from './_shared/process'
+import { RES_TYPE } from './const'
 
 export const printHelp = ( name: string, description: string, docsURL: string, version: string ): void => {
 

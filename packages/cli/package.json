@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/cli",
-	"version": "0.0.10",
+	"version": "0.0.11",
 	"description": "Get the actual size of any local or remote package",
 	"keywords": [
 		"bin",
@@ -57,14 +57,16 @@
 		"build": "pnpm build:lib",
 		"build:bin": "binarium -c build.binarium.js node",
 		"build:lib": "unbuild",
-		"dev": "tsx src/main.ts"
+		"dev": "tsx src/bin.ts"
 	},
 	"dependencies": {
-		"@sizium/core": "workspace:*",
 		"picocolors": "1.1.1"
 	},
 	"devDependencies": {
 		"@sizium/repo-config": "workspace:*"
+	},
+	"peerDependencies": {
+		"@sizium/core": "workspace:*"
 	},
 	"publishConfig": {
 		"access": "public",

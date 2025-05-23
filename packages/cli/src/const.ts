@@ -18,10 +18,11 @@ export {
 	description,
 }
 export const RES_TYPE = {
-	JSON : 'json',
-	SIZE : 'size',
-	ALL  : 'all',
-	INFO : 'info',
+	JSON     : 'json',
+	SIZE     : 'size',
+	ALL      : 'all',
+	INFO     : 'info',
+	MIN_INFO : 'min-info',
 } as const
 export const OPTIONS = {
 	INPUT : {

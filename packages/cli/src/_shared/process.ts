@@ -1,8 +1,9 @@
 
-import appProcess, {
-	argv,
-	exit,
-} from 'node:process'
+import appProcess from 'node:process'
+
+const {
+	exit, argv,
+} = appProcess
 
 export { exit }
 

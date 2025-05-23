@@ -1,5 +1,11 @@
 # @sizium/repo-config
 
+## 0.0.11
+
+### Patch Changes
+
+- update cli output
+
 ## 0.0.10
 
 ### Patch Changes
