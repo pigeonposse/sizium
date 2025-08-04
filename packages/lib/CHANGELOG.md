@@ -1,5 +1,17 @@
 # sizium
 
+## 0.2.0
+
+### Minor Changes
+
+- Update license to MIT
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @sizium/core@0.2.0
+  - @sizium/cli@2.0.0
+
 ## 0.1.1
 
 ### Patch Changes

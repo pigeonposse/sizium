@@ -1,5 +1,11 @@
 # @sizium/api-client
 
+## 0.2.0
+
+### Minor Changes
+
+- Update license to MIT
+
 ## 0.1.1
 
 ### Patch Changes

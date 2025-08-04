@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/api-client",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"description": "REST API client for Sizium. Get the actual size of any local or remote package",
 	"keywords": [
 		"api",
@@ -25,7 +25,7 @@
 		"type": "individual",
 		"url": "https://pigeonposse.com/?popup=donate"
 	},
-	"license": "GPL-3.0",
+	"license": "MIT",
 	"author": {
 		"name": "Angelo",
 		"email": "angelo@pigeonposse.com",

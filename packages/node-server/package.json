@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/node-server",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"description": "Node.js server for Sizium REST API. Get the actual size of any local or remote package",
 	"keywords": [
 		"node-server",
@@ -24,7 +24,7 @@
 		"type": "individual",
 		"url": "https://pigeonposse.com/?popup=donate"
 	},
-	"license": "GPL-3.0",
+	"license": "MIT",
 	"author": {
 		"name": "Angelo",
 		"email": "angelo@pigeonposse.com",
