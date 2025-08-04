@@ -21,6 +21,7 @@ permissions:
   pull-requests: write # to create pull request (changesets/action)
   issues: write # to post issue comments (changesets/action
   id-token: write # to use OpenID Connect token for provenance (changesets/action)
+  actions: write 
 
 ###############################################################################
 # JOBS
@@ -171,6 +172,7 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: release-docs.yml
+          token: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
 
       #########################################################################
@@ -182,6 +184,7 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: release-web.yml
+          token: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
 
       #########################################################################

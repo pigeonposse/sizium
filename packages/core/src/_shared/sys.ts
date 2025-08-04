@@ -2,6 +2,29 @@ export const isBrowser = typeof window !== 'undefined' && typeof document !== 'u
 
 export type Input = string | URL
 
+const trimSlashes = ( segment: string, index: number ) => {
+
+	if ( index === 0 ) {
+
+		let i = segment.length
+		while ( i > 0 && segment[i - 1] === '/' ) i--
+		return segment.slice( 0, i )
+
+	}
+	else {
+
+		let start = 0,
+			end   = segment.length
+
+		while ( start < end && segment[start] === '/' ) start++
+		while ( end > start && segment[end - 1] === '/' ) end--
+
+		return segment.slice( start, end )
+
+	}
+
+}
+
 /**
  * Joins multiple path segments into a single path.
  *
@@ -24,12 +47,7 @@ export const joinPath = async ( ...paths: string[] ): Promise<string> => {
 	}
 	return paths
 		.filter( Boolean )
-		.map( ( segment, index ) => {
-
-			if ( index === 0 ) return segment.replace( /\/+$/, '' )
-			else return segment.replace( /^\/+|\/+$/g, '' )
-
-		} )
+		.map( trimSlashes )
 		.filter( Boolean )
 		.join( '/' )
 

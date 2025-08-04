@@ -13,6 +13,8 @@ env:
     DOCS_ID: 'docs-sizium'
     DOCS_DIR: 'packages/docs/build/docs'
     BUILD_CMD: 'pnpm build'
+permissions:
+    contents: read
 
 ###############################################################################
 # JOBS
