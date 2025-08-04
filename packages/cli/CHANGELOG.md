@@ -1,5 +1,14 @@
 # @sizium/cli
 
+## 2.0.1
+
+### Patch Changes
+
+- Avoid package redundancies in the core package, add functions on the web
+
+- Updated dependencies []:
+  - @sizium/core@0.2.1
+
 ## 2.0.0
 
 ### Minor Changes

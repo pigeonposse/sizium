@@ -89,15 +89,15 @@
 
 		<DepMain data={userState.package.data} />
 
-		{#if userState.package.data.hasLifecycleScripts}
+		{#if userState.package.data.hasLifeCycleInstallScripts}
 			<div class="title text-primary-200/30 flex flex-col flex-nowrap gap-2 items-start">
 				<b>
-					<Badge type="warning">Life Cycle Scripts</Badge>
+					<Badge type="warning">Install Scripts</Badge>
 				</b>
 				{#if userState.package.data.packages[0].lifeCycleScripts}
-					<p>Package have lifecycle scripts.</p>
+					<p>Package have install lifecycle scripts.</p>
 				{:else}
-					<p>Packages dependences have lifecycle scripts.</p>
+					<p>Packages dependences have install lifecycle scripts.</p>
 				{/if}
 				<span>
 					Lifecycle scripts are scripts that can modify the package size.

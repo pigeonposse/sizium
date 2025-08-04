@@ -1,5 +1,11 @@
 # @sizium/repo-config
 
+## 0.2.1
+
+### Patch Changes
+
+- Avoid package redundancies in the core package, add functions on the web
+
 ## 0.2.0
 
 ### Minor Changes

@@ -160,7 +160,7 @@
 				<Popover.Root>
 					<Badge type="tertiary">ESM</Badge>
 					<Popover.Content>
-						<p>Ecmascript Modules</p>
+						<p>ECMAScript Modules</p>
 					</Popover.Content>
 				</Popover.Root>
 			{/if}
@@ -180,9 +180,9 @@
 					</Popover.Content>
 				</Popover.Root>
 			{/if}
-			{#if pkg.lifeCycleScripts && !Object.keys( pkg.lifeCycleScripts ).includes( 'prepare' )}
+			{#if pkg.lifeCycleScripts && userState.package.hasInstallScript( pkg )}
 				<Popover.Root>
-					<Badge type="warning">Life Cycle Scripts</Badge>
+					<Badge type="warning">Install Scripts</Badge>
 					<Popover.Content>
 						<DepLifeCycleScripts data={pkg.lifeCycleScripts} />
 					</Popover.Content>

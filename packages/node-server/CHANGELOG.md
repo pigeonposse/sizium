@@ -1,5 +1,14 @@
 # @sizium/node-server
 
+## 0.2.1
+
+### Patch Changes
+
+- Avoid package redundancies in the core package, add functions on the web
+
+- Updated dependencies []:
+  - @sizium/api@0.2.1
+
 ## 0.2.0
 
 ### Minor Changes

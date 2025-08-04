@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/cli",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "Get the actual size of any local or remote package",
 	"keywords": [
 		"bin",

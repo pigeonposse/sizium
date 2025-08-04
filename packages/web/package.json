@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/web",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"private": true,
 	"description": "Get the actual size of any local or remote package",
 	"type": "module",

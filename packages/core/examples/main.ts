@@ -16,7 +16,7 @@ if ( process.argv.includes( args.registry ) ) {
 	const pkg  = new SiziumRegistry( packageName || 'binarium@latest' )
 	const data = await pkg.get()
 
-	console.dir( data, { depth: Infinity } )
+	console.log( JSON.stringify( data, null, 2 ) )
 	console.log()
 	console.log( data.size + ' bytes' )
 	console.log( data.size / 1000000 + ' mb' )

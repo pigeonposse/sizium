@@ -21,10 +21,10 @@ import { page }             from '$app/state'
 import { decodeQueryParam } from '$utils'
 
 export type PkgData = SiziumResponse & {
-	isFiltered?          : boolean
-	filtered?            : PkgInfo[]
-	filter?              : string
-	hasLifecycleScripts? : boolean
+	isFiltered?                 : boolean
+	filtered?                   : PkgInfo[]
+	filter?                     : string
+	hasLifeCycleInstallScripts? : boolean
 }
 export type PkgInfo = SiziumResponse['packages'][0]
 type SortType = FilterType
@@ -93,23 +93,23 @@ class PackageState {
 		const main = this.#data.packages.find( pkg => pkg.name === this.query )
 
 		if ( !main ) return undefined
-		const filter              = new SiziumFilter( this.#data )
-		const filtered            = filter.run( {
+		const filter                     = new SiziumFilter( this.#data )
+		const filtered                   = filter.run( {
 			sort   : opts.sort || this.ID.sortDefault,
 			filter : opts.filter,
 		} )
-		const hasLifecycleScripts = filtered.packages.some( pkg => pkg.lifeCycleScripts && !Object.keys( pkg.lifeCycleScripts ).includes( 'prepare' ) )
+		const hasLifeCycleInstallScripts = filtered.packages.some( pkg => this.hasInstallScript( pkg ) )
 		if ( 'filtered' in filtered ) return {
 			...filtered,
 			main       : main,
 			isFiltered : true,
 			filter     : opts.filter,
-			hasLifecycleScripts,
+			hasLifeCycleInstallScripts,
 		}
 		return {
 			main,
 			...filtered,
-			hasLifecycleScripts,
+			hasLifeCycleInstallScripts,
 		}
 
 	} )
@@ -226,6 +226,12 @@ class PackageState {
 			this.loading = false
 
 		}
+
+	}
+
+	hasInstallScript( pkg: PkgInfo ) {
+
+		return pkg.lifeCycleScripts && Object.keys( pkg.lifeCycleScripts ).includes( 'install' )
 
 	}
 

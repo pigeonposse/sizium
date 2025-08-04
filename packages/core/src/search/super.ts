@@ -213,8 +213,20 @@ export class PackageSuper {
 
 	async #processDependencies( dependencies: NonNullable<PackageInfo['dependencies']>, level: number, parentName: string ): Promise<PackageInfo[]> {
 
-		const packages: PackageInfo[] = []
+		const packages   = new Map<string, PackageInfo>()
+		const addPackage = ( pkg: PackageInfo ) => {
 
+			const pkgExist = packages.get( pkg.id )
+
+			packages.set( pkg.id, pkgExist
+				? {
+					...pkgExist,
+					installedBy : !pkg.installedBy ? pkgExist.installedBy : [ ...pkgExist.installedBy || [], ...pkg.installedBy ],
+				}
+				: pkg,
+			)
+
+		}
 		const promises = Object.entries( dependencies ).map( async ( [ depName, depVersion ] ) => {
 
 			try {
@@ -226,8 +238,8 @@ export class PackageSuper {
 				// 	packageKey,
 				// 	installedBy,
 				// } )
-				if ( this.#processedPackages.has( packageKey ) ) return
 
+				if ( this.#processedPackages.has( packageKey ) ) return
 				this.#processedPackages.add( packageKey )
 
 				const depData = await this.getRegistryData( {
@@ -236,13 +248,12 @@ export class PackageSuper {
 					level,
 					installedBy,
 				} )
-
-				packages.push( depData )
+				addPackage( depData )
 
 				if ( depData.dependencies ) {
 
 					const subDeps = await this.#processDependencies( depData.dependencies, level + 1, packageKey )
-					packages.push( ...subDeps )
+					for ( const pkg of subDeps ) addPackage( pkg )
 
 				}
 
@@ -257,7 +268,7 @@ export class PackageSuper {
 		} )
 
 		await Promise.all( promises )
-		return packages
+		return Array.from( packages.values() )
 
 	}
 
