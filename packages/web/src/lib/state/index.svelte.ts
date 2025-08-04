@@ -21,12 +21,12 @@ import { page }             from '$app/state'
 import { decodeQueryParam } from '$utils'
 
 export type PkgData = SiziumResponse & {
-	isFiltered? : boolean
-	filtered?   : PkgInfo[]
-	filter?     : string
+	isFiltered?          : boolean
+	filtered?            : PkgInfo[]
+	filter?              : string
+	hasLifecycleScripts? : boolean
 }
 export type PkgInfo = SiziumResponse['packages'][0]
-
 type SortType = FilterType
 
 const sortText = {
@@ -43,7 +43,7 @@ const sortDefault  = FILTER_TYPE.LEVEL
 
 class PackageState {
 
-	ID   = {
+	ID = {
 		search   : 's',
 		filter   : 'filter',
 		sort     : 'sort',
@@ -62,6 +62,7 @@ class PackageState {
 	filter  : string = $state( '' )
 	sortBy  : SortType = $state( this.ID.sortDefault )
 	#isInit = $state( false )
+
 	#options = $derived.by( () => {
 
 		const filter = !this.filter || this.filter.trim() === '' ? undefined : this.filter
@@ -92,22 +93,23 @@ class PackageState {
 		const main = this.#data.packages.find( pkg => pkg.name === this.query )
 
 		if ( !main ) return undefined
-		const filter   = new SiziumFilter( this.#data )
-		const filtered = filter
-			.run( {
-				sort   : opts.sort || this.ID.sortDefault,
-				filter : opts.filter,
-			} )
-		// filter.find()
+		const filter              = new SiziumFilter( this.#data )
+		const filtered            = filter.run( {
+			sort   : opts.sort || this.ID.sortDefault,
+			filter : opts.filter,
+		} )
+		const hasLifecycleScripts = filtered.packages.some( pkg => pkg.lifeCycleScripts && !Object.keys( pkg.lifeCycleScripts ).includes( 'prepare' ) )
 		if ( 'filtered' in filtered ) return {
-			main       : main,
 			...filtered,
+			main       : main,
 			isFiltered : true,
 			filter     : opts.filter,
+			hasLifecycleScripts,
 		}
 		return {
 			main,
 			...filtered,
+			hasLifecycleScripts,
 		}
 
 	} )
@@ -182,6 +184,17 @@ class PackageState {
 			throw e
 
 		}
+
+	}
+
+	find( name: {
+		name     : string
+		version? : string
+	} | string ) {
+
+		const app = new SiziumFilter( this.#data )
+
+		return app.find( name )
 
 	}
 

@@ -1,5 +1,11 @@
 # @sizium/core
 
+## 0.1.1
+
+### Patch Changes
+
+- add web feats
+
 ## 0.1.0
 
 ### Minor Changes

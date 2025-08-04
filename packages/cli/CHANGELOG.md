@@ -1,5 +1,14 @@
 # @sizium/cli
 
+## 1.0.1
+
+### Patch Changes
+
+- add web feats
+
+- Updated dependencies []:
+  - @sizium/core@0.1.1
+
 ## 1.0.0
 
 ### Minor Changes

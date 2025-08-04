@@ -1,11 +1,5 @@
 <script lang="ts">
 
-	import { SiziumFilter } from '@sizium/core'
-
-	import LifeCycleScripts from './dep-lifecycle.svelte'
-	import DepLink from './dep-link.svelte'
-	import DepLinks from './dep-links.svelte'
-
 	import {
 		type PkgData,
 		type PkgInfo,
@@ -16,6 +10,11 @@
 		Popover,
 	} from '$components'
 	import { VIEW_ICON } from '$icons'
+	import {
+		DepLifeCycleScripts,
+		DepLink,
+		DepLinks,
+	} from '$ui'
 	import { roundToTwoDecimals } from '$utils'
 
 	type Dependence = PkgInfo | {
@@ -26,7 +25,9 @@
 
 	type Props = {
 		pkg  : PkgInfo
-		/** All Package data*/
+		/**
+		 * All Package data
+		 */
 		data : PkgData
 	}
 	let {
@@ -37,21 +38,14 @@
 	const getID = ( name: string, version?: string ) =>
 		version ? name + '@' + version : name
 
-	const filter                       = new SiziumFilter( data )
 	let dependencies: Deps | undefined = $derived( ( !pkg.dependencies
 		? undefined
-		: Object.entries( pkg.dependencies ).map( ( [ name, version ] ) => {
-
-			const dep = filter.find( {
-				name,
-				version,
-			} )
-
-			return dep || {
-				name,
-				version,
-			}
-
+		: Object.entries( pkg.dependencies ).map( ( [ name, version ] ) => userState.package.find( {
+			name,
+			version,
+		} ) || {
+			name,
+			version,
 		} ) ) )
 
 </script>
@@ -62,7 +56,7 @@
 		href="#{getID( value.name, value.version )}"
 	>
 		<b>{getID( value.name, value.version )}</b>
-		<span>{'unpackedSizeKB' in value ? ` ${roundToTwoDecimals( value.unpackedSizeKB )} KB` : ''}</span>
+		<span class="text-end">{'unpackedSizeKB' in value ? ` ${roundToTwoDecimals( value.unpackedSizeKB )} KB` : ''}</span>
 	</a>
 {/snippet}
 
@@ -82,7 +76,9 @@
 					<a
 						href="{pkg.url.npm}"
 						target="_blank"
-					>{pkg.name}</a>
+					>
+						{pkg.name}
+					</a>
 					<span class="text-primary-400">v{pkg.version}</span>
 				</h3>
 				{#if pkg.author?.name && pkg.author?.url}
@@ -104,7 +100,7 @@
 					>{pkg.license}</Badge>
 				{/if}
 			</div>
-			<!-- {#if pkg.U} -->
+
 			{#if pkg.description}
 				<p class="opacity-50 text-sm mb-2">{pkg.description}</p>
 			{/if}
@@ -116,7 +112,7 @@
 					{#if pkg.installedBy?.length}
 						<Popover.Content>
 							{#each pkg.installedBy as name}
-								{@render deplink( filter.find( name ) || { name } )}
+								{@render deplink( userState.package.find( name ) || { name } )}
 							{/each}
 						</Popover.Content>
 					{/if}
@@ -184,11 +180,11 @@
 					</Popover.Content>
 				</Popover.Root>
 			{/if}
-			{#if pkg.lifeCycleScripts}
+			{#if pkg.lifeCycleScripts && !Object.keys( pkg.lifeCycleScripts ).includes( 'prepare' )}
 				<Popover.Root>
 					<Badge type="warning">Life Cycle Scripts</Badge>
 					<Popover.Content>
-						<LifeCycleScripts data={pkg.lifeCycleScripts} />
+						<DepLifeCycleScripts data={pkg.lifeCycleScripts} />
 					</Popover.Content>
 				</Popover.Root>
 			{/if}

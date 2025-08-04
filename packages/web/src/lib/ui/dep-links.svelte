@@ -1,7 +1,5 @@
 <script lang="ts">
 
-	import Link from './dep-link.svelte'
-
 	import type { PkgInfo } from '$appstate'
 
 	import {
@@ -11,41 +9,42 @@
 		SEGURITY_ICON,
 		WEB_ICON,
 	} from '$icons'
+	import { DepLink } from '$ui'
 
 	let { pkg }: { pkg: PkgInfo } = $props()
 
 </script>
 
 {#if pkg.url.unpkg}
-	<Link
+	<DepLink
 		href={pkg.url.unpkg}
 		icon={PACKAGE_ICON}
 		label="UnPKG CDN"
 	/>
 {/if}
 {#if pkg.url.repository}
-	<Link
+	<DepLink
 		href={pkg.url.repository}
 		icon={GITHUB_ICON}
 		label="Repository"
 	/>
 {/if}
 {#if pkg.url.homepage}
-	<Link
+	<DepLink
 		href={pkg.url.homepage}
 		icon={WEB_ICON}
 		label="Homepage"
 	/>
 {/if}
 {#if pkg.url.funding}
-	<Link
+	<DepLink
 		href={pkg.url.funding}
 		icon={DONATE_ICON}
 		label="Sponsor"
 	/>
 {/if}
 
-<Link
+<DepLink
 	href={`https://socket.dev/npm/package/${pkg.name}`}
 	icon={SEGURITY_ICON}
 	label="Security"
