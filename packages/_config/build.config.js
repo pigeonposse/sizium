@@ -4,7 +4,7 @@ export const config = {
 	sourcemap   : false,
 	declaration : true,
 	rollup      : {
-		emitCJS            : true,
+		emitCJS            : false,
 		inlineDependencies : true,
 		esbuild            : {
 			minify : false,

@@ -1,5 +1,11 @@
 # @sizium/api-client
 
+## 0.1.0
+
+### Minor Changes
+
+- add feats to core and web
+
 ## 0.0.11
 
 ### Patch Changes

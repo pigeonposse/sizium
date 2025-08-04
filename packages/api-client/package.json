@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/api-client",
-	"version": "0.0.11",
+	"version": "0.1.0",
 	"description": "REST API client for Sizium. Get the actual size of any local or remote package",
 	"keywords": [
 		"api",
@@ -37,10 +37,6 @@
 			"import": {
 				"types": "./dist/main.d.mts",
 				"default": "./dist/main.mjs"
-			},
-			"require": {
-				"types": "./dist/main.d.cts",
-				"default": "./dist/main.cjs"
 			}
 		}
 	},

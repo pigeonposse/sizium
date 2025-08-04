@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/cli",
-	"version": "0.0.11",
+	"version": "1.0.0",
 	"description": "Get the actual size of any local or remote package",
 	"keywords": [
 		"bin",
@@ -37,14 +37,10 @@
 			"import": {
 				"types": "./dist/main.d.mts",
 				"default": "./dist/main.mjs"
-			},
-			"require": {
-				"types": "./dist/main.d.cts",
-				"default": "./dist/main.cjs"
 			}
 		}
 	},
-	"main": "dist/main.cjs",
+	"main": "dist/main.mjs",
 	"module": "dist/main.mjs",
 	"types": "dist/main.d.ts",
 	"bin": {
@@ -58,9 +54,6 @@
 		"build:bin": "binarium -c build.binarium.js node",
 		"build:lib": "unbuild",
 		"dev": "tsx src/bin.ts"
-	},
-	"dependencies": {
-		"picocolors": "1.1.1"
 	},
 	"devDependencies": {
 		"@sizium/repo-config": "workspace:*"

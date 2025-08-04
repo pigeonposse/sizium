@@ -1,16 +1,15 @@
-/* eslint-disable @stylistic/object-curly-newline */
-import semver from 'semver'
-
 import {
 	ERROR_ID,
 	LIFE_CYCLE_SCRIPTS,
 } from './const'
+import { getVersion }             from './utils'
 import { TypedError }             from '../_shared/error'
 import { normalizeRepositoryUrl } from '../_shared/url'
 
 import type {
 	PackageJSON,
 	PackageInfo,
+	RegistryPackageJSON,
 } from './types'
 
 type SiziumErrorID = typeof ERROR_ID[keyof typeof ERROR_ID]
@@ -20,23 +19,31 @@ export class SiziumError extends TypedError<SiziumErrorID, {
 	e?  : unknown
 }> {}
 
+// eslint-disable-next-line @stylistic/object-curly-newline
+type PackageSuperOptions = {
+	/** Skip error on package dependence and return undefined  */
+	skipError : boolean }
+
 export class PackageSuper {
 
 	ERROR_ID = ERROR_ID
 	Error = SiziumError
+	#processedPackages : Set<string> = new Set()
+	protected LIFE_CYCLE_SCRIPTS = LIFE_CYCLE_SCRIPTS
 
 	constructor(
 		public input: string,
-		public opts?: {
-			/** Skip error on package dependence and return undefined  */
-			skipError : boolean
-		},
+		public opts?: PackageSuperOptions,
 	) {
 
 	}
 
-	private processedPackages : Set<string> = new Set()
-	protected LIFE_CYCLE_SCRIPTS = LIFE_CYCLE_SCRIPTS
+	// #getFixedVersion( version: string ) {
+
+	// 	const validVersion = semver.valid( semver.coerce( version ) )
+	// 	return validVersion ? validVersion : 'latest'
+
+	// }
 
 	protected getMainPkgData( allPackages: PackageInfo[] ) {
 
@@ -58,9 +65,18 @@ export class PackageSuper {
 
 	}
 
-	protected getPkgData( data: PackageJSON, level = 0, unpackedSize?: number, installedBy?: string | string[] ): PackageInfo {
+	protected getPkgData( opts: {
+		data          : PackageJSON
+		level?        : number
+		unpackedSize? : number
+		installedBy?  : string | string[]
+	} ): PackageInfo {
 
+		const {
+			data, level = 0, unpackedSize, installedBy,
+		} = opts
 		const lcScripts = {} as NonNullable<PackageInfo['lifeCycleScripts']>
+
 		if ( data.scripts ) {
 
 			const scripts = Object.keys( data.scripts )
@@ -75,6 +91,7 @@ export class PackageSuper {
 		}
 		const size = unpackedSize ?? 0
 		return {
+			id          : `${data.name}@${data.version}`,
 			name        : data.name,
 			version     : data.version,
 			description : data.description,
@@ -105,10 +122,23 @@ export class PackageSuper {
 				npm   : `https://www.npmjs.com/package/${data.name}/v/${data.version}`,
 				unpkg : `https://unpkg.com/${data.name}@${data.version}/`,
 			},
-			unpackedSize     : size,
-			unpackedSizeKB   : size / 1000,
-			unpackedSizeMB   : size / 1000000,
-			dependencies     : data.dependencies,
+			unpackedSize   : size,
+			unpackedSizeKB : size / 1000,
+			unpackedSizeMB : size / 1000000,
+			dependencies   : data.dependencies,
+			// dependencies   : !data.dependencies
+			// 	? undefined
+			// 	: Object.fromEntries( Object.entries( data.dependencies ).map( ( [ key, value ] ) => {
+
+			// 		return [
+			// 			key,
+			// 			{
+			// 				version        : this.#getFixedVersion( value || 'latest' ),
+			// 				packageVersion : value,
+			// 			},
+			// 		]
+
+			// 	} ) ),
 			devDependencies  : data.devDependencies,
 			lifeCycleScripts : Object.keys( lcScripts ).length ? lcScripts : undefined,
 			installedBy      : installedBy === undefined
@@ -121,20 +151,19 @@ export class PackageSuper {
 
 	}
 
-	#getVersion( version:string, availableVersions: string[] ) {
+	protected async getRegistryData( opts: {
+		name         : string
+		version      : string
+		level?       : number
+		installedBy? : string
+	} ): Promise<PackageInfo> {
 
-		let selectedVersion: string | undefined
-		if ( semver.valid( version ) ) selectedVersion = version
-		else {
-
-			selectedVersion = semver.maxSatisfying( availableVersions, version ) || undefined
-
-		}
-		return selectedVersion?.replace( /^v(?=\d)/, '' )
-
-	}
-
-	protected async getRegistryData( packageName: string, version: string, level = 0, installedBy?: string ): Promise<PackageInfo> {
+		const {
+			name: packageName,
+			version,
+			level = 0,
+			installedBy,
+		} = opts
 
 		try {
 
@@ -149,18 +178,23 @@ export class PackageSuper {
 			}
 			const res = await response.json()
 
-			const selectedVersion = this.#getVersion( version, Object.keys( res.versions ) )
+			const selectedVersion = getVersion( version, Object.keys( res.versions ) )
 				|| res['dist-tags'].latest
 				|| 'latest'
 
-			const data = res.versions[selectedVersion]
+			const data = res.versions[selectedVersion] as RegistryPackageJSON
 
 			if ( !data ) throw new Error( `Version ${version} (${selectedVersion}) not found` )
 
 			const size       = data.dist?.unpackedSize
 			const secureSize = typeof size === 'string' ? Number( size ) : typeof size === 'number' ? size : undefined
 
-			return this.getPkgData( data, level, secureSize, installedBy )
+			return this.getPkgData( {
+				data,
+				level,
+				unpackedSize : secureSize,
+				installedBy,
+			} )
 
 		}
 		catch ( e ) {
@@ -185,19 +219,29 @@ export class PackageSuper {
 
 			try {
 
-				const packageKey = `${depName}@${depVersion}`
 				if ( !depVersion ) return
-				if ( this.processedPackages.has( packageKey ) ) return
+				const packageKey  = `${depName}@${depVersion}`
+				const installedBy = parentName
+				// console.log( {
+				// 	packageKey,
+				// 	installedBy,
+				// } )
+				if ( this.#processedPackages.has( packageKey ) ) return
 
-				this.processedPackages.add( packageKey )
+				this.#processedPackages.add( packageKey )
 
-				const depData = await this.getRegistryData( depName, depVersion, level, parentName )
+				const depData = await this.getRegistryData( {
+					name    : depName,
+					version : depVersion,
+					level,
+					installedBy,
+				} )
 
 				packages.push( depData )
 
 				if ( depData.dependencies ) {
 
-					const subDeps = await this.#processDependencies( depData.dependencies, level + 1, depName )
+					const subDeps = await this.#processDependencies( depData.dependencies, level + 1, packageKey )
 					packages.push( ...subDeps )
 
 				}
@@ -220,12 +264,13 @@ export class PackageSuper {
 	protected async getPackagesData( mainPackage: PackageInfo ): Promise<PackageInfo[]> {
 
 		const allPackages = [ mainPackage ]
+		const mainId      = `${mainPackage.name}@${mainPackage.version}`
 
-		this.processedPackages.add( `${mainPackage.name}@${mainPackage.version}` )
+		this.#processedPackages.add( mainId )
 
 		if ( mainPackage.dependencies ) {
 
-			const deps = await this.#processDependencies( mainPackage.dependencies, 1, mainPackage.name )
+			const deps = await this.#processDependencies( mainPackage.dependencies, 1, mainId )
 			allPackages.push( ...deps )
 
 		}

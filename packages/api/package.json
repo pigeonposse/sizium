@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/api",
-	"version": "0.0.11",
+	"version": "0.1.0",
 	"description": "REST API for Sizium. Get the actual size of any local or remote package",
 	"keywords": [
 		"api",
@@ -52,7 +52,7 @@
 		"backan": "0.2.8"
 	},
 	"devDependencies": {
-		"@hono/vite-dev-server": "0.19.1",
+		"@hono/vite-dev-server": "0.20.0",
 		"@sizium/repo-config": "workspace:*"
 	},
 	"publishConfig": {

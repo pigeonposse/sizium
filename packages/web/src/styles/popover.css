@@ -1,0 +1,21 @@
+.popover {
+	@apply relative;
+}
+.popover:hover > .popover--content,
+.popover:focus-visible > .popover--content {
+	@apply flex;
+}
+
+.popover--content {
+	@apply absolute top-full left-0 mt-0 p-4 z-[99999] hidden flex-col gap-3 max-h-60 overflow-y-scroll w-max max-w-80;
+	@apply bg-primary-950 rounded-lg shadow-lg;
+	@apply break-words whitespace-normal;
+}
+
+.popover--content span, 
+.popover--content p {
+	@apply text-primary-50/50 text-xs;
+}
+.popover--content h4 > span{
+	@apply !text-primary-50;
+}

@@ -1,0 +1,5 @@
+export { default as DepLinks } from './dep-links.svelte'
+export { default as DepMain } from './dep-main.svelte'
+export { default as DependencyItem } from './dependency.svelte'
+export { default as Finder } from './finder.svelte'
+export { default as DepsFilters } from './deps-filters.svelte'

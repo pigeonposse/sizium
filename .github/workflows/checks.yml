@@ -16,6 +16,11 @@ env:
   GITHUB_TOKEN: ${{ github.token }}
   NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
   LIB_ID: "@sizium/core"
+permissions:
+  contents: write # to create release (changesets/action)
+  pull-requests: write # to create pull request (changesets/action)
+  issues: write # to post issue comments (changesets/action
+  id-token: write # to use OpenID Connect token for provenance (changesets/action)
 
 ###############################################################################
 # JOBS
@@ -56,33 +61,24 @@ jobs:
         env:
             GH_TOKEN: ${{ env.GITHUB_TOKEN }}
 
-    ############################### W ALL DEPENDENCESS ################################
-    #   - name: 🛠 Install System Dependencies for canvas and imagemin npm deps
-    #     run: |
-    #       sudo apt-get update
-    #       sudo apt-get install -y \
-    #         build-essential \
-    #         libcairo2-dev \
-    #         libpango1.0-dev \
-    #         libjpeg-dev \
-    #         libgif-dev \
-    #         librsvg2-dev \
-    #         libpng-dev \
-    #         zlib1g-dev \
-    #         libimagequant-dev \
-    #         nasm
-    #   - name: ⬇️📦 Install dependencies
-    #     run: |
-    #        export npm_config_build_from_source=false
-    #        pnpm install --no-frozen-lockfile
-
       - name: ⬇️📦 Install dependencies
         run: |
            export npm_config_build_from_source=false
            pnpm install --no-frozen-lockfile --ignore-scripts
 
+      # Playwright binaries
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$( node -e "console.log(require('./package.json').devDependencies['@playwright/test'])" )" >> $GITHUB_ENV
+      - name: Cache playwright binaries
+        uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
       - name: ⬇️🌐 Install Playwright Browsers
         run: pnpx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       #########################################################################
       # BUILD
@@ -128,6 +124,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ env.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
 
       - name: Get updated versions if exists
         id: updated

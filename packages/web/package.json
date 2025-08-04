@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/web",
-	"version": "0.0.11",
+	"version": "0.1.0",
 	"private": true,
 	"description": "Get the actual size of any local or remote package",
 	"type": "module",
@@ -14,17 +14,21 @@
 		"test:e2e": "playwright test"
 	},
 	"dependencies": {
-		"@sizium/core": "workspace:*",
-		"lucide-svelte": "0.511.0"
+		"@sizium/core": "workspace:*"
 	},
 	"devDependencies": {
+		"@ascii-kit/image": "0.0.6",
+		"@iconify-json/fa6-brands": "1.2.5",
+		"@iconify-json/fa6-solid": "1.2.3",
 		"@macfja/svelte-persistent-store": "2.4.2",
-		"@sveltejs/adapter-cloudflare": "7.0.3",
-		"@sveltejs/kit": "2.21.1",
-		"@sveltejs/vite-plugin-svelte": "5.0.3",
-		"autoprefixer": "10.4.21",
-		"svelte": "5.32.1",
-		"svelte-check": "4.2.1",
-		"tailwindcss": "3.4.17"
+		"@svaio/media": "0.0.11",
+		"@svaio/meta": "0.0.11",
+		"@svaio/pwa": "0.0.11",
+		"@svaio/sitemap": "0.0.11",
+		"@svaio/unocss": "0.0.11",
+		"@sveltejs/adapter-cloudflare": "7.1.0",
+		"@sveltejs/kit": "2.25.1",
+		"svelte": "5.36.13",
+		"svelte-check": "4.3.0"
 	}
 }

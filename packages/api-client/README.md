@@ -11,6 +11,8 @@
 
 [![License](https://img.shields.io/github/license/pigeonposse/sizium?style=for-the-badge&color=green&logoColor=white)](/LICENSE)
 [![Version](https://img.shields.io/npm/v/sizium?style=for-the-badge&color=blue&label=Version)](https://www.npmjs.com/package/sizium)
+[![NPM package minimized gzipped size](https://img.shields.io/bundlejs/size/@sizium/api-client?style=for-the-badge&color=orange&label=Minimized+size&logoColor=white)](https://www.npmjs.com/package/@sizium/api-client)
+[![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/@sizium/api-client/0.0.11?style=for-the-badge&color=orange&logoColor=white)](https://www.npmjs.com/package/@sizium/api-client)
 
 REST API client for Sizium. Get the actual size of any local or remote package
 
@@ -43,11 +45,11 @@ deno add @sizium/api-client
 ## ➕ More
 
 - 🌞 [Core](https://docs.sizium.pigeonposse.com/guide/core)
-- [Api-client](https://docs.sizium.pigeonposse.com/guide/api-client)
 - 📖 [Api](https://docs.sizium.pigeonposse.com/guide/api)
-- 🔢 [Cli](https://docs.sizium.pigeonposse.com/guide/cli)
+- [Api-client](https://docs.sizium.pigeonposse.com/guide/api-client)
 - [Lib](https://docs.sizium.pigeonposse.com/guide/lib)
 - [Node-server](https://docs.sizium.pigeonposse.com/guide/node-server)
+- 🔢 [Cli](https://docs.sizium.pigeonposse.com/guide/cli)
 
 
 ---
@@ -103,21 +105,15 @@ This software is licensed with __[GPL-3.0](https://github.com/pigeonposse/sizium
 ██╔═══╝ ██║██║   ██║██╔══╝  ██║   ██║██║╚██╗██║██╔═══╝ ██║   ██║╚════██║╚════██║██╔══╝  
 ██║     ██║╚██████╔╝███████╗╚██████╔╝██║ ╚████║██║     ╚██████╔╝███████║███████║███████╗
 ╚═╝     ╚═╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝      ╚═════╝ ╚══════╝╚══════╝╚══════╝
-                                                                                        
-                                                                                        
-                                                                                        
-█████╗█████╗█████╗█████╗█████╗█████╗█████╗                                              
-╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝                                              
-                                                                                        
-                                                                                        
-                                                                                        
+█████╗█████╗█████╗█████╗█████╗█████╗█████╗█████╗█████╗                                  
+╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝                                  
 ███████╗██╗███████╗██╗██╗   ██╗███╗   ███╗                                              
 ██╔════╝██║╚══███╔╝██║██║   ██║████╗ ████║                                              
 ███████╗██║  ███╔╝ ██║██║   ██║██╔████╔██║                                              
 ╚════██║██║ ███╔╝  ██║██║   ██║██║╚██╔╝██║                                              
 ███████║██║███████╗██║╚██████╔╝██║ ╚═╝ ██║                                              
 ╚══════╝╚═╝╚══════╝╚═╝ ╚═════╝ ╚═╝     ╚═╝                                              
-                                                                                        
+
 - Author: [Angelo](https://github.com/angelespejo)
 
 

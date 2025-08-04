@@ -5,14 +5,15 @@ import {
 
 console.time( 'Execution Time' )
 
-const args = {
+const args        = {
 	registry : '--registry',
 	local    : '--local',
 } as const
+const packageName = process.argv.find( a => a.startsWith( '--pkg=' ) )?.split( '=' )[1]
 
 if ( process.argv.includes( args.registry ) ) {
 
-	const pkg  = new SiziumRegistry( 'binarium@latest' )
+	const pkg  = new SiziumRegistry( packageName || 'binarium@latest' )
 	const data = await pkg.get()
 
 	console.dir( data, { depth: Infinity } )

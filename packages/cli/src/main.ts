@@ -65,7 +65,7 @@ export const run = async () => {
 				[ 'Size MB', parseFloat( data.sizeMB.toFixed( 2 ) ) ],
 				[ 'Packages installed', data.packageNum ],
 			]
-			console.log( pkgInfo.map( ( [ name, value ] ) => `${name}: ${dim( value )}` ).join( '\n' ) + '\n' )
+			console.log( pkgInfo.map( ( [ name, value ] ) => `${name}: ${dim( String( value ) )}` ).join( '\n' ) + '\n' )
 
 			if ( FLAGS.RES === RES_TYPE.MIN_INFO ) return
 

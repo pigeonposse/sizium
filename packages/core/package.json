@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/core",
-	"version": "0.0.11",
+	"version": "0.1.0",
 	"description": "Get the actual size of any local or remote package",
 	"keywords": [
 		"package",
@@ -35,34 +35,22 @@
 			"import": {
 				"types": "./dist/main.d.mts",
 				"default": "./dist/main.mjs"
-			},
-			"require": {
-				"types": "./dist/main.d.cts",
-				"default": "./dist/main.cjs"
 			}
 		},
 		"./local": {
 			"import": {
 				"types": "./dist/search/local.d.mts",
 				"default": "./dist/search/local.mjs"
-			},
-			"require": {
-				"types": "./dist/search/local.d.cts",
-				"default": "./dist/search/local.cjs"
 			}
 		},
 		"./registry": {
 			"import": {
 				"types": "./dist/search/registry.d.mts",
 				"default": "./dist/search/registry.mjs"
-			},
-			"require": {
-				"types": "./dist/search/registry.d.cts",
-				"default": "./dist/search/registry.cjs"
 			}
 		}
 	},
-	"main": "dist/main.cjs",
+	"main": "dist/main.mjs",
 	"module": "dist/main.mjs",
 	"types": "dist/main.d.ts",
 	"files": [
@@ -70,7 +58,8 @@
 	],
 	"scripts": {
 		"build": "unbuild",
-		"dev": "tsx examples/main.ts"
+		"dev": "tsx examples/main.ts",
+		"test": "vitest run src"
 	},
 	"dependencies": {
 		"semver": "7.7.2"

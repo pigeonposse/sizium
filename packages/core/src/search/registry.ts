@@ -1,4 +1,5 @@
 import { PackageSuper } from './super'
+import { parseName }    from './utils'
 
 import type { SiziumResponse } from './types'
 
@@ -18,22 +19,14 @@ export class SiziumRegistry extends PackageSuper {
 
 		try {
 
-			const RE_SCOPED = /^(@[^\\/]+\/[^@\\/]+)(?:@([^\\/]+))?(\/.*)?$/
-			// Parsed a non-scoped package name into name, version, path
-			const RE_NON_SCOPED = /^([^@\\/]+)(?:@([^\\/]+))?(\/.*)?$/
-			input               = input.toLowerCase()
-			const m             = RE_SCOPED.exec( input ) || RE_NON_SCOPED.exec( input )
+			const data = parseName( input )
 
-			if ( !m ) throw new this.Error(
+			if ( !data ) throw new this.Error(
 				this.ERROR_ID.INVALID_PKG_NAME,
 				{ msg: `invalid package name: ${input}` },
 			)
 
-			return {
-				name    : m[1] || '',
-				version : m[2] || 'latest',
-				path    : m[3] || '',
-			}
+			return data
 
 		}
 		catch ( e ) {
@@ -54,7 +47,11 @@ export class SiziumRegistry extends PackageSuper {
 	async get(): Promise<SiziumResponse> {
 
 		const data        = this.#parseName( this.input )
-		const mainPackage = await this.getRegistryData( data.name, data.version, 0 )
+		const mainPackage = await this.getRegistryData( {
+			name    : data.name,
+			version : data.version,
+			level   : 0,
+		} )
 		const allPackages = await this.getPackagesData( mainPackage )
 
 		return this.getMainPkgData( allPackages )

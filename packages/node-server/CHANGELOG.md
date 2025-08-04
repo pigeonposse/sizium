@@ -1,5 +1,16 @@
 # @sizium/node-server
 
+## 0.1.0
+
+### Minor Changes
+
+- add feats to core and web
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @sizium/api@0.1.0
+
 ## 0.0.11
 
 ### Patch Changes

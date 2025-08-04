@@ -1,3 +1,5 @@
+/// <reference types="@svaio/pwa/types" />
+/// <reference types="@svaio/media/types" />
 
 // See https://svelte.dev/docs/kit/types#app.d.ts
 // for information about these interfaces
@@ -11,6 +13,7 @@ declare global {
 	}
 	declare const MAIN_PKG: typeof import( '../../../package.json' )
 	declare const PKG: typeof import( '../package.json' )
+	const LOGO_ASCII: string
 }
 
 export {}

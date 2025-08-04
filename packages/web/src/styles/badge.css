@@ -1,0 +1,15 @@
+.badge {
+	@apply px-2 py-0.5 text-xs bg-primary-900/20 rounded-full;
+}
+.badge--primary {
+	@apply  text-primary-200/40;
+}
+.badge--secondary {
+	@apply text-primary-900 bg-primary-400 ;
+}
+.badge--tertiary {
+	@apply text-primary-300 bg-primary-600/30;
+}
+.badge--warning {
+	@apply text-yellow-500 bg-yellow-600/20;
+}

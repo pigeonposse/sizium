@@ -1,6 +1,6 @@
 {
 	"name": "sizium",
-	"version": "0.0.11",
+	"version": "0.1.0",
 	"description": "Get the actual size of any local or remote package",
 	"keywords": [
 		"package",
@@ -35,14 +35,10 @@
 			"import": {
 				"types": "./dist/main.d.mts",
 				"default": "./dist/main.mjs"
-			},
-			"require": {
-				"types": "./dist/main.d.cts",
-				"default": "./dist/main.cjs"
 			}
 		}
 	},
-	"main": "dist/main.cjs",
+	"main": "dist/main.mjs",
 	"module": "dist/main.mjs",
 	"types": "dist/main.d.ts",
 	"bin": {

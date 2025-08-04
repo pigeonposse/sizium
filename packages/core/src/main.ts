@@ -1,5 +1,9 @@
-import { getInputType }   from './_shared/type'
-import { SiziumFilter }   from './search/filter'
+import { getInputType } from './_shared/type'
+import {
+	SiziumFilter,
+	FILTER_TYPE,
+	FilterType,
+} from './search/filter'
 import { SiziumLocal }    from './search/local'
 import { SiziumRegistry } from './search/registry'
 
@@ -36,19 +40,19 @@ export type * from './search/types'
  */
 export class Sizium {
 
-	inputType : ReturnType<typeof getInputType>
+	inputType : Awaited<ReturnType<typeof getInputType>> = 'string'
 	pkg       : SiziumResponse | undefined
 	filter
 
 	constructor( public input: string ) {
 
-		this.inputType = getInputType( input )
-		this.filter    = new SiziumFilter( this.pkg )
+		this.filter = new SiziumFilter( this.pkg )
 
 	}
 
-	#validateURL() {
+	async #validateURL() {
 
+		this.inputType = await getInputType( this.input )
 		if ( this.inputType == 'url' && this.input.startsWith( 'https://www.npmjs.com/package/' ) ) {
 
 			this.inputType = 'string'
@@ -71,12 +75,13 @@ export class Sizium {
 
 		this.#validateURL()
 
-		const pkg       = this.inputType === 'string'
+		const pkg         = this.inputType === 'string'
 			? new SiziumRegistry( this.input )
 			: new SiziumLocal( this.input )
-		const data      = await pkg.get()
-		this.pkg        = data
-		this.filter.pkg = data
+		const data        = await pkg.get()
+		this.pkg          = data
+		this.filter.value = data
+
 		return data
 
 	}
@@ -106,4 +111,6 @@ export {
 	SiziumFilter,
 	SiziumLocal,
 	SiziumRegistry,
+	FILTER_TYPE,
 }
+export type { FilterType }

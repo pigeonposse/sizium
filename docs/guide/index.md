@@ -8,6 +8,24 @@
 
 You can use the full **Sizium** by installing the `sizium` library or you can use only the parts you need to get better performance.
 
+::: code-group
+```bash [npm]
+npx sizium --help
+```
+```bash [pnpm]
+pnpx sizium --help
+```
+```bash [yarn]
+yarn dlx sizium --help
+```
+```bash [bun]
+bunx sizium --help
+```
+```bash [deno]
+deno run -A npm:sizium --help
+```
+:::
+
 ## Library
 
 - [Read more](/guide/lib/)
@@ -54,6 +72,24 @@ console.log(data)
 ## CLI
 
 Use the Command line Interface in your system.
+
+::: code-group
+```bash [npm]
+npx sizium --help
+```
+```bash [pnpm]
+pnpx sizium --help
+```
+```bash [yarn]
+yarn dlx sizium --help
+```
+```bash [bun]
+bunx sizium --help
+```
+```bash [deno]
+deno run -A npm:sizium --help
+```
+:::
 
 ::: code-group
 

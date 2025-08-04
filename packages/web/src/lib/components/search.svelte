@@ -1,35 +1,42 @@
 <script lang="ts">
 
-	import { Search } from 'lucide-svelte'
+	import type { HTMLInputAttributes } from 'svelte/elements'
 
-	export let value = ''
-	export let placeholder = ''
-	export let size: 'medium' | 'small' = 'medium'
+	import { SEARCH_ICON } from '$icons'
+
+	let input: HTMLInputElement | undefined
+
+	let {
+		el = $bindable( input ),
+		value = $bindable( '' ),
+		size = 'medium',
+		id,
+		class: Klass,
+		...rest
+	}: Omit<HTMLInputAttributes, 'size'> & {
+		el?          : HTMLInputElement
+		value        : string
+		placeholder? : string
+		size?        : 'medium' | 'small'
+		id           : string
+	} = $props()
 
 </script>
-<div class="relative">
+<div
+	class={[
+		'search',
+		size,
+		Klass,
+	]}
+>
 	<input
-		class="search-input {size}"
-		aria-label="Package name"
-		{placeholder}
-		type="text"
+		bind:this={input}
+		{id}
+		class={[ 'search-input' ]}
+		type="search"
 		bind:value={value}
+		{...rest}
 	/>
-	<button
-		class="absolute right-2 top-1/2 -translate-y-1/2 p-2"
-		aria-label="Search"
-		type="submit"
-	>
-		<Search class="w-5 h-5" />
-	</button>
+	<span class={[ 'search-icon', SEARCH_ICON ]}></span>
 </div>
 
-<style lang="postcss">
-	.search-input {
-		@apply w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 pr-12;
-	}
-	.search-input.small {
-		@apply px-2 py-2 text-sm;
-	}
-
-</style>
