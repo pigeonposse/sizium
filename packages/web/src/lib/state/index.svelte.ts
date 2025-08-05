@@ -90,15 +90,19 @@ class PackageState {
 
 		const opts = this.#options
 		if ( !this.#data ) return undefined
-		const main = this.#data.packages.find( pkg => pkg.name === this.query )
 
+		// GET MAIN PACKAGE WITN DATA ID
+		const id   = this.#data.id
+		const main = this.#data.packages.find( pkg => pkg.name === id )
 		if ( !main ) return undefined
+
 		const filter                     = new SiziumFilter( this.#data )
 		const filtered                   = filter.run( {
 			sort   : opts.sort || this.ID.sortDefault,
 			filter : opts.filter,
 		} )
 		const hasLifeCycleInstallScripts = filtered.packages.some( pkg => this.hasInstallScript( pkg ) )
+
 		if ( 'filtered' in filtered ) return {
 			...filtered,
 			main       : main,
@@ -208,7 +212,7 @@ class PackageState {
 		try {
 
 			if ( update ) this.#updateURL( this.query )
-			if ( !this.query ) return
+
 			const data = await this.#getPkgData( this.query )
 
 			this.#data = data

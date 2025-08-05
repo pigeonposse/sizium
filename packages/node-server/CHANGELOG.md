@@ -1,5 +1,14 @@
 # @sizium/node-server
 
+## 0.2.3
+
+### Patch Changes
+
+- fix search issue in web
+
+- Updated dependencies []:
+  - @sizium/api@0.2.3
+
 ## 0.2.2
 
 ### Patch Changes

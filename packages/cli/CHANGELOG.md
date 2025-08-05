@@ -1,5 +1,14 @@
 # @sizium/cli
 
+## 2.0.3
+
+### Patch Changes
+
+- fix search issue in web
+
+- Updated dependencies []:
+  - @sizium/core@0.2.3
+
 ## 2.0.2
 
 ### Patch Changes

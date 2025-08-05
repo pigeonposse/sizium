@@ -1,5 +1,11 @@
 # @sizium/core
 
+## 0.2.3
+
+### Patch Changes
+
+- fix search issue in web
+
 ## 0.2.2
 
 ### Patch Changes
