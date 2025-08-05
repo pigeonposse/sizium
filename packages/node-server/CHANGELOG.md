@@ -1,5 +1,14 @@
 # @sizium/node-server
 
+## 0.2.2
+
+### Patch Changes
+
+- fix issues with siziumFilter
+
+- Updated dependencies []:
+  - @sizium/api@0.2.2
+
 ## 0.2.1
 
 ### Patch Changes

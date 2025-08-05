@@ -193,7 +193,6 @@ class PackageState {
 	} | string ) {
 
 		const app = new SiziumFilter( this.#data )
-
 		return app.find( name )
 
 	}

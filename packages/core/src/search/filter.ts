@@ -229,11 +229,15 @@ export class SiziumFilter {
 
 		const pkgs = this.value.packages.filter( v => v.name === name )
 
-		if ( !pkgs ) return undefined
+		if ( !pkgs || pkgs.length === 0 ) return undefined
 
 		const availableVersions = pkgs.map( v => v.version )
-		const versionToFind     = getVersion( version || 'latest', availableVersions )
+		const safeVersion       = typeof version === 'string' ? version.trim() : ''
 
+		const versionToFind = getVersion(
+			safeVersion === '' ? 'latest' : safeVersion,
+			availableVersions,
+		)
 		return pkgs.find( v => v.version === versionToFind )
 
 	}

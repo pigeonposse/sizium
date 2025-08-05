@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/api-client",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "REST API client for Sizium. Get the actual size of any local or remote package",
 	"keywords": [
 		"api",

@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/core",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "Get the actual size of any local or remote package",
 	"keywords": [
 		"package",

@@ -1,5 +1,11 @@
 # @sizium/repo-config
 
+## 0.2.2
+
+### Patch Changes
+
+- fix issues with siziumFilter
+
 ## 0.2.1
 
 ### Patch Changes

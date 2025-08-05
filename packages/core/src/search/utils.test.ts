@@ -91,7 +91,7 @@ describe( 'parseName', () => {
 		expect( parseName( 'mypkg@1.0.0' ) ).toEqual( {
 			name    : 'mypkg',
 			version : '1.0.0',
-			path    : '',
+			path    : undefined,
 		} )
 
 	} )
@@ -101,7 +101,7 @@ describe( 'parseName', () => {
 		expect( parseName( 'mypkg' ) ).toEqual( {
 			name    : 'mypkg',
 			version : 'latest',
-			path    : '',
+			path    : undefined,
 		} )
 
 	} )
@@ -121,7 +121,7 @@ describe( 'parseName', () => {
 		expect( parseName( '@myorg/mypkg@^2.1.0' ) ).toEqual( {
 			name    : '@myorg/mypkg',
 			version : '^2.1.0',
-			path    : '',
+			path    : undefined,
 		} )
 
 	} )
@@ -131,7 +131,7 @@ describe( 'parseName', () => {
 		expect( parseName( '@myorg/mypkg' ) ).toEqual( {
 			name    : '@myorg/mypkg',
 			version : 'latest',
-			path    : '',
+			path    : undefined,
 		} )
 
 	} )
@@ -141,7 +141,25 @@ describe( 'parseName', () => {
 		expect( parseName( 'MyPkg@1.0.0' ) ).toEqual( {
 			name    : 'mypkg',
 			version : '1.0.0',
-			path    : '',
+			path    : undefined,
+		} )
+
+	} )
+	it( 'scoped package names', () => {
+
+		expect( parseName( '@dovenv/theme-banda@1.6.0' ) ).toEqual( {
+			name    : '@dovenv/theme-banda',
+			version : '1.6.0',
+			path    : undefined,
+		} )
+
+	} )
+	it( 'scoped package names with subpath', () => {
+
+		expect( parseName( '@dovenv/theme-banda@1.6.0/lib' ) ).toEqual( {
+			name    : '@dovenv/theme-banda',
+			version : '1.6.0',
+			path    : '/lib',
 		} )
 
 	} )
@@ -155,3 +173,4 @@ describe( 'parseName', () => {
 	} )
 
 } )
+

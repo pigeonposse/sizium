@@ -80,11 +80,12 @@ export const parseName = ( input: string ) => {
 	const m             = RE_SCOPED.exec( input ) || RE_NON_SCOPED.exec( input )
 
 	if ( !m ) return undefined
+	const rawPath = typeof m[3] === 'string' ? m[3].trim() : ''
 
 	return {
 		name    : m[1] || '',
 		version : m[2] || 'latest',
-		path    : m[3] || '',
+		path    : rawPath !== '' ? rawPath : undefined,
 	}
 
 }

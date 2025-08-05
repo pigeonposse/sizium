@@ -1,5 +1,14 @@
 # @sizium/api
 
+## 0.2.2
+
+### Patch Changes
+
+- fix issues with siziumFilter
+
+- Updated dependencies []:
+  - @sizium/core@0.2.2
+
 ## 0.2.1
 
 ### Patch Changes
