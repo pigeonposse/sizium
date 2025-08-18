@@ -1,8 +1,8 @@
 # @sizium/node-server
 
-## 0.2.4
+## 2.0.4
 
-### Patch Changes
+### Mayor Changes
 
 - Update deps, fix web issues, refactor some code, fix issue with mayor dependence in @sizium/cli
 
