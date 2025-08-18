@@ -69,3 +69,4 @@ packages/**/build
 **/__cache__/*
 docs/dev-dist
 **/docs/dev-dist
+**/web/dev-dist

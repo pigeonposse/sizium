@@ -9,7 +9,9 @@
 	"commit": false,
 	"fixed": [
 		[
-			"*sizium*"
+			"*sizium*",
+			"@sizium/*",
+			"sizium"
 		]
 	],
 	"linked": [

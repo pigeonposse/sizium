@@ -16,6 +16,14 @@ const theme = pigeonposseMonorepoTheme( {
 			desc  : '☀️ Core package',
 		},
 		{
+			value : 'cli',
+			desc  : '🔢 cli package(s)',
+		},
+		{
+			value : 'api',
+			desc  : '🌐 API package(s)',
+		},
+		{
 			value : 'env',
 			desc  : 'Only dev environment',
 		},

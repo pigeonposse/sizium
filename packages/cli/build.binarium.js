@@ -3,8 +3,7 @@ import { defineConfig } from 'binarium'
 import core from '../../.dovenv/const.js'
 
 export default defineConfig( {
-	input : './dist/bin.mjs',
-
+	input       : './src/binarium.ts',
 	name        : core.corePkg.name,
 	nodeOptions : { esbuild : {
 		noDefaultPlugins : true,

@@ -21,3 +21,26 @@ depending on the specified resolution type.
 #### Returns
 
 `Promise`\<`void`\>
+
+***
+
+### updater()
+
+```ts
+function updater(__namedParameters: {
+  name: string;
+  version: string;
+}): Promise<void>
+```
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `__namedParameters` | `object` |
+| `__namedParameters.name` | `string` |
+| `__namedParameters.version` | `string` |
+
+#### Returns
+
+`Promise`\<`void`\>

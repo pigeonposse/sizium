@@ -20,6 +20,7 @@ import {
 	version,
 } from './const'
 import { printHelp } from './help'
+import { updater }   from './up'
 
 /**
  * Executes the CLI command based on the provided flags and options.
@@ -112,3 +113,5 @@ export const run = async () => {
 	if ( FLAGS.TIME ) console.timeEnd( 'Execution Time' )
 
 }
+
+export { updater }

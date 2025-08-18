@@ -157,7 +157,7 @@ hr {
 
 /** Header **/
 .header {
-	@apply text-center mb-12 justify-center flex flex-col items-center content-center justify-items-center;
+	@apply text-center mb-12 justify-center flex flex-col items-center content-center justify-items-center gap-2;
 }
 .header--img {
 	@apply mb-5;

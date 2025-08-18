@@ -1,5 +1,14 @@
 # @sizium/cli
 
+## 2.0.4
+
+### Patch Changes
+
+- Update deps, fix web issues, refactor some code, fix issue with mayor dependence in @sizium/cli
+
+- Updated dependencies []:
+  - @sizium/core@0.2.4
+
 ## 2.0.3
 
 ### Patch Changes

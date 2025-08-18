@@ -15,6 +15,7 @@ export const documentationURL = homepage
 
 export {
 	version,
+	pkgName,
 	description,
 }
 export const RES_TYPE = {

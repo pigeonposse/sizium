@@ -10,6 +10,7 @@ import {
 	setConfig,
 	setSvelteConfig,
 } from '@dovenv/theme-pigeonposse/eslint'
+import { defineConfig } from 'eslint/config'
 
 import svelteConfig from './svelte.config.js'
 import consts       from '../../.dovenv/const.js'
@@ -18,7 +19,8 @@ const svelteEslintConfig =  await setSvelteConfig( {
 	ts : true,
 	svelteConfig,
 } )
-const config             = [
+
+export default defineConfig( [
 	...setConfig( {
 		general    : 'ts',
 		gitignore  : joinPath( consts.workspaceDir, '.gitignore' ),
@@ -30,6 +32,4 @@ const config             = [
 		playwright : true,
 	} ),
 	...svelteEslintConfig,
-]
-
-export default config
+] )

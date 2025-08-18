@@ -86,7 +86,7 @@ https://sizium.pigeonposse.com/guide/core/api#siziumresponse
 | ------ | ------ |
 | `filter` | [`SiziumFilter`](#siziumfilter) |
 | `input` | `string` |
-| `inputType` | `"string"` \| `"url"` \| `"json"` \| `"path"` |
+| `inputType` | `"string"` \| `"json"` \| `"url"` \| `"path"` |
 | `pkg` | `undefined` \| [`SiziumResponse`](#siziumresponse) |
 
 ***

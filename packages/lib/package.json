@@ -1,6 +1,6 @@
 {
 	"name": "sizium",
-	"version": "0.2.3",
+	"version": "2.0.4",
 	"description": "Get the actual size of any local or remote package",
 	"keywords": [
 		"package",
@@ -49,7 +49,7 @@
 	],
 	"scripts": {
 		"build": "unbuild",
-		"dev": "tsx examples/main.ts"
+		"dev": "tsx src/bin.ts"
 	},
 	"dependencies": {
 		"@sizium/cli": "workspace:*",

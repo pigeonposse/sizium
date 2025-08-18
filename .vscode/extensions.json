@@ -1,0 +1,23 @@
+{
+	/**
+	* *****************************************************************************
+	* VSCODE extensions Config
+	* *****************************************************************************
+	*
+	* @description Specifies the recommended extensions for your Visual Studio Code (VSCode) project.
+	* These extensions enhance functionality and are automatically suggested for installation.
+	* @see https://code.visualstudio.com/docs/editor/extension-gallery
+	*
+	* *****************************************************************************
+	*/
+	"recommendations": [
+		"svelte.svelte-vscode",
+		"dbaeumer.vscode-eslint",
+		"nhoizey.gremlins",
+		"csstools.postcss",
+		"bradlc.vscode-tailwindcss",
+		"redhat.vscode-yaml",
+		"editorconfig.editorconfig",
+		"github.vscode-github-actions",
+	]
+}

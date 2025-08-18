@@ -12,7 +12,10 @@
 	import '../styles'
 	import { page } from '$app/state'
 
-	import { Confetti } from '$components'
+	import {
+		Badge,
+		Confetti,
+	} from '$components'
 	import {
 		DOCUMENTATION_ICON,
 		DONATE_ICON,
@@ -73,6 +76,27 @@
 			href="https://www.npmjs.com/"
 			target="_blank"
 		>npm</a></strong> <i>package</i></p>
+		<div>
+			<Badge>Serverless</Badge>
+			<Badge
+				link={{
+					href   : MAIN_PKG.repository.url,
+					target : '_blank',
+				}}
+			>Open Source</Badge>
+			<Badge
+				link={{
+					href   : MAIN_PKG.extra.licenseURL,
+					target : '_blank',
+				}}
+			>Free</Badge>
+			<Badge
+				link={{
+					href   : MAIN_PKG.extra.docsURL,
+					target : '_blank',
+				}}
+			>Toolkit</Badge>
+		</div>
 	</header>
 
 	<article class="article">
