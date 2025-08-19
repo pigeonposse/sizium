@@ -1,12 +1,17 @@
-import { Sizium } from '@sizium/core'
+import {
+	Sizium,
+	SiziumError,
+} from '@sizium/core'
 
 import {
 	bold,
 	dim,
 	underline,
+	red,
 } from './_shared/color'
 import {
 	existsFlag,
+	exit,
 	getFlagValue,
 	noFlags,
 } from './_shared/process'
@@ -54,58 +59,73 @@ export const run = async () => {
 	else if ( FLAGS.VERSION ) console.log( version )
 	else if ( FLAGS.INPUT ) {
 
-		const size = new Sizium( FLAGS.INPUT )
-		const data = await size.get()
+		try {
 
-		if ( FLAGS.RES === RES_TYPE.SIZE ) console.log( `${data.sizeKB}kb | ${data.sizeMB}mb` )
-		else if ( FLAGS.RES === RES_TYPE.INFO || FLAGS.RES === RES_TYPE.MIN_INFO ) {
+			const size = new Sizium( FLAGS.INPUT )
+			const data = await size.get()
 
-			console.log( underline( bold( data.id ) ) + '\n' )
-			const pkgInfo = [
-				[ 'Size KB', parseFloat( data.sizeKB.toFixed( 2 ) ) ],
-				[ 'Size MB', parseFloat( data.sizeMB.toFixed( 2 ) ) ],
-				[ 'Packages installed', data.packageNum ],
-			]
-			console.log( pkgInfo.map( ( [ name, value ] ) => `${name}: ${dim( String( value ) )}` ).join( '\n' ) + '\n' )
+			if ( FLAGS.RES === RES_TYPE.SIZE ) console.log( `${data.sizeKB}kb | ${data.sizeMB}mb` )
+			else if ( FLAGS.RES === RES_TYPE.INFO || FLAGS.RES === RES_TYPE.MIN_INFO ) {
 
-			if ( FLAGS.RES === RES_TYPE.MIN_INFO ) return
+				console.log( underline( bold( data.id ) ) + '\n' )
+				const pkgInfo = [
+					[ 'Size KB', parseFloat( data.sizeKB.toFixed( 2 ) ) ],
+					[ 'Size MB', parseFloat( data.sizeMB.toFixed( 2 ) ) ],
+					[ 'Packages installed', data.packageNum ],
+				]
+				console.log( pkgInfo.map( ( [ name, value ] ) => `${name}: ${dim( String( value ) )}` ).join( '\n' ) + '\n' )
 
-			const info: { [name: string]: {
-				kb     : number
-				mb     : number
-				level? : number
-			} } = {}
-			for ( let i = 0; i < data.packages.length; i++ ) {
+				if ( FLAGS.RES === RES_TYPE.MIN_INFO ) return
 
-				const pkg      = data.packages[i]
-				info[pkg.name] = {
-					kb    : parseFloat( pkg.unpackedSizeKB.toFixed( 2 ) ),
-					mb    : parseFloat( pkg.unpackedSizeMB.toFixed( 2 ) ),
-					level : pkg.level,
+				const info: { [name: string]: {
+					kb     : number
+					mb     : number
+					level? : number
+				} } = {}
+				for ( let i = 0; i < data.packages.length; i++ ) {
+
+					const pkg      = data.packages[i]
+					info[pkg.name] = {
+						kb    : parseFloat( pkg.unpackedSizeKB.toFixed( 2 ) ),
+						mb    : parseFloat( pkg.unpackedSizeMB.toFixed( 2 ) ),
+						level : pkg.level,
+					}
+
 				}
 
+				if ( Object.keys( info ).length ) {
+
+					const sorted = Object.entries( info )
+						.sort( ( a, b ) => b[1].kb - a[1].kb )
+						.reduce( ( acc, [ name, data ] ) => {
+
+							acc[name] = data
+							return acc
+
+						}, {} as typeof info )
+
+					console.table( sorted )
+
+				}
+
+				console.log( `\nMore details: `, dim( `https://sizium.pigeonposse.com/?s=${data.id}` ) )
+
 			}
-
-			if ( Object.keys( info ).length ) {
-
-				const sorted = Object.entries( info )
-					.sort( ( a, b ) => b[1].kb - a[1].kb )
-					.reduce( ( acc, [ name, data ] ) => {
-
-						acc[name] = data
-						return acc
-
-					}, {} as typeof info )
-
-				console.table( sorted )
-
-			}
-
-			console.log( `\nMore details: `, dim( `https://sizium.pigeonposse.com/?s=${data.id}` ) )
+			else if ( FLAGS.RES === RES_TYPE.JSON ) console.log( JSON.stringify( data ) )
+			else console.dir( data, { depth: Infinity } )
 
 		}
-		else if ( FLAGS.RES === RES_TYPE.JSON ) console.log( JSON.stringify( data ) )
-		else console.dir( data, { depth: Infinity } )
+		catch ( e ) {
+
+			console.error( red(
+				e instanceof SiziumError
+					? e.data ? `${e.data.msg} (Error id: ${e.message})` : `Unexpected error: ${e.message}`
+					: e instanceof Error ? e.message : 'Unexpected error',
+			) )
+
+			exit( 1 )
+
+		}
 
 	}
 	else printHelp( name, description, documentationURL, version )

@@ -6,10 +6,13 @@ import {
 } from './search/filter'
 import { SiziumLocal }    from './search/local'
 import { SiziumRegistry } from './search/registry'
+import { SiziumError }    from './search/super'
 
 import type { SiziumResponse } from './search/types'
 
 export type * from './search/types'
+
+export { SiziumError }
 
 /**
  * Represents the main class for handling package size.
@@ -50,7 +53,7 @@ export class Sizium {
 
 	}
 
-	async #validateURL() {
+	async #validateInput() {
 
 		this.inputType = await getInputType( this.input )
 		if ( this.inputType == 'url' && this.input.startsWith( 'https://www.npmjs.com/package/' ) ) {
@@ -73,7 +76,7 @@ export class Sizium {
 	 */
 	async get() {
 
-		this.#validateURL()
+		await this.#validateInput()
 
 		const pkg         = this.inputType === 'string'
 			? new SiziumRegistry( this.input )

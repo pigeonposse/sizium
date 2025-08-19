@@ -44,8 +44,9 @@ export const getInputType = async ( value: string ): Promise<'url' | 'json' | 'p
 		throw new Error( 'Input is not a valid string' )
 
 	if ( isUrl( value ) ) return 'url'
-	if ( isJsonString( value ) ) return 'json'
 	if ( await isPath( value ) ) return 'path'
+	// isJsonString must be the last one since a json string could be a url string or a path string as well
+	if ( isJsonString( value ) ) return 'json'
 
 	return 'string'
 

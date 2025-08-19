@@ -58,6 +58,7 @@
 	},
 	"devDependencies": {
 		"@changesets/changelog-github": "0.5.1",
+		"@changesets/cli": "^2.29.6",
 		"@dovenv/core": "1.6.1",
 		"@dovenv/theme-pigeonposse": "1.6.1",
 		"@playwright/test": "1.54.2",

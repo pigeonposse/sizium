@@ -2,6 +2,7 @@
 
 import { styleText } from 'node:util'
 
+export const red =  ( text: string ) => styleText( 'red', text )
 export const bold = ( text: string ) => styleText( 'bold', text )
 export const italic = ( text: string ) => styleText( 'italic', text )
 export const green = ( text: string ) => styleText( 'green', text )
