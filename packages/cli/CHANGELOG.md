@@ -1,5 +1,14 @@
 # @sizium/cli
 
+## 2.0.5
+
+### Patch Changes
+
+- fix CHANGELOG files
+
+- Updated dependencies []:
+  - @sizium/core@2.0.5
+
 ## 2.0.4
 
 ### Patch Changes

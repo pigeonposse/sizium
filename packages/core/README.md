@@ -12,7 +12,7 @@
 [![License](https://img.shields.io/github/license/pigeonposse/sizium?style=for-the-badge&color=green&logoColor=white)](/LICENSE)
 [![Version](https://img.shields.io/npm/v/sizium?style=for-the-badge&color=blue&label=Version)](https://www.npmjs.com/package/sizium)
 [![NPM package minimized gzipped size](https://img.shields.io/bundlejs/size/@sizium/core?style=for-the-badge&color=orange&label=Minimized+size&logoColor=white)](https://www.npmjs.com/package/@sizium/core)
-[![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/@sizium/core/0.2.3?style=for-the-badge&color=orange&logoColor=white)](https://www.npmjs.com/package/@sizium/core)
+[![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/@sizium/core/2.0.5?style=for-the-badge&color=orange&logoColor=white)](https://www.npmjs.com/package/@sizium/core)
 
 Get the actual size of any local or remote package
 
@@ -79,8 +79,8 @@ deno add @sizium/core
 
 - 🌞 [Core](https://docs.sizium.pigeonposse.com/guide/core)
 - 📖 [Api](https://docs.sizium.pigeonposse.com/guide/api)
-- [Api-client](https://docs.sizium.pigeonposse.com/guide/api-client)
 - 🔢 [Cli](https://docs.sizium.pigeonposse.com/guide/cli)
+- [Api-client](https://docs.sizium.pigeonposse.com/guide/api-client)
 - [Lib](https://docs.sizium.pigeonposse.com/guide/lib)
 - [Node-server](https://docs.sizium.pigeonposse.com/guide/node-server)
 

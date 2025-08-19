@@ -1,13 +1,22 @@
 # @sizium/node-server
 
+## 2.0.5
+
+### Patch Changes
+
+- fix CHANGELOG files
+
+- Updated dependencies []:
+  - @sizium/api@2.0.5
+
 ## 2.0.4
 
-### Mayor Changes
+### Minor Changes
 
 - Update deps, fix web issues, refactor some code, fix issue with mayor dependence in @sizium/cli
 
 - Updated dependencies []:
-  - @sizium/api@0.2.4
+  - @sizium/api@2.0.4
 
 ## 0.2.3
 

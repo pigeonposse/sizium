@@ -1,13 +1,23 @@
 # sizium
 
+## 2.0.5
+
+### Patch Changes
+
+- fix CHANGELOG files
+
+- Updated dependencies []:
+  - @sizium/core@2.0.5
+  - @sizium/cli@2.0.5
+
 ## 2.0.4
 
-### Mayor Changes
+### Minor Changes
 
 - Update deps, fix web issues, refactor some code, fix issue with mayor dependence in @sizium/cli
 
 - Updated dependencies []:
-  - @sizium/core@0.2.4
+  - @sizium/core@2.0.4
   - @sizium/cli@2.0.4
 
 ## 0.2.3

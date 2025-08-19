@@ -6,7 +6,6 @@
 			"repo": "pigeonposse/sizium"
 		}
 	],
-	"commit": false,
 	"fixed": [
 		[
 			"*sizium*",
@@ -16,13 +15,14 @@
 	],
 	"linked": [
 	],
+	"ignore": [
+	],
 	"access": "restricted",
 	"baseBranch": "main",
+	"commit": false,
 	"updateInternalDependencies": "patch",
 	"privatePackages": {
 		"version": true,
 		"tag": true
-	},
-	"ignore": [
-	]
+	}
 }

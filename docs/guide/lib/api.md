@@ -91,6 +91,54 @@ https://sizium.pigeonposse.com/guide/core/api#siziumresponse
 
 ***
 
+### SiziumError
+
+#### Extends
+
+- `TypedError`\<`SiziumErrorID`, \{
+  `e`: `unknown`;
+  `msg`: `string`;
+ \}\>
+
+#### Constructors
+
+##### new SiziumError()
+
+```ts
+new SiziumError(message: SiziumErrorID, data?: {
+  e: unknown;
+  msg: string;
+ }): SiziumError
+```
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `message` | `SiziumErrorID` |
+| `data`? | `object` |
+| `data.e`? | `unknown` |
+| `data.msg`? | `string` |
+
+###### Returns
+
+[`SiziumError`](#siziumerror)
+
+###### Inherited from
+
+`TypedError<SiziumErrorID, {
+    msg: string;
+    e?: unknown;
+}>.constructor`
+
+#### Properties
+
+| Property | Type | Inherited from |
+| ------ | ------ | ------ |
+| `data` | `undefined` \| \{ `e`: `unknown`; `msg`: `string`; \} | `TypedError.data` |
+
+***
+
 ### SiziumFilter
 
 A class to filter and sort package information based on various criteria.
@@ -457,7 +505,7 @@ A promise that resolves with the package response data,
 
 | Property | Modifier | Type | Inherited from |
 | ------ | ------ | ------ | ------ |
-| `Error` | `public` | *typeof* `SiziumError` | `PackageSuper.Error` |
+| `Error` | `public` | *typeof* [`SiziumError`](#siziumerror) | `PackageSuper.Error` |
 | `ERROR_ID` | `public` | \{ `GETTING_LOCAL_DATA`: `"GETTING_LOCAL_DATA"`; `GETTING_PKG_NAME`: `"GETTING_PKG_NAME"`; `GETTING_REGISTRY_DATA`: `"GETTING_REGISTRY_DATA"`; `INVALID_PKG_NAME`: `"INVALID_PKG_NAME"`; \} | `PackageSuper.ERROR_ID` |
 | `ERROR_ID.GETTING_LOCAL_DATA` | `readonly` | `"GETTING_LOCAL_DATA"` | - |
 | `ERROR_ID.GETTING_PKG_NAME` | `readonly` | `"GETTING_PKG_NAME"` | - |
@@ -525,7 +573,7 @@ get(): Promise<SiziumResponse>
 
 | Property | Modifier | Type | Inherited from |
 | ------ | ------ | ------ | ------ |
-| `Error` | `public` | *typeof* `SiziumError` | `PackageSuper.Error` |
+| `Error` | `public` | *typeof* [`SiziumError`](#siziumerror) | `PackageSuper.Error` |
 | `ERROR_ID` | `public` | \{ `GETTING_LOCAL_DATA`: `"GETTING_LOCAL_DATA"`; `GETTING_PKG_NAME`: `"GETTING_PKG_NAME"`; `GETTING_REGISTRY_DATA`: `"GETTING_REGISTRY_DATA"`; `INVALID_PKG_NAME`: `"INVALID_PKG_NAME"`; \} | `PackageSuper.ERROR_ID` |
 | `ERROR_ID.GETTING_LOCAL_DATA` | `readonly` | `"GETTING_LOCAL_DATA"` | - |
 | `ERROR_ID.GETTING_PKG_NAME` | `readonly` | `"GETTING_PKG_NAME"` | - |
