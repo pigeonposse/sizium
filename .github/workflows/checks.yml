@@ -14,7 +14,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 env:
   GITHUB_TOKEN: ${{ github.token }}
-  NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_SIZIUM_ACCESS_TOKEN }}
   LIB_ID: "@sizium/core"
 permissions:
   contents: write # to create release (changesets/action)
