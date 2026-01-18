@@ -1,5 +1,6 @@
 {
 	"name": "@sizium/docs",
+	"version": "2.0.6",
 	"private": true,
 	"description": "Documentation page for sizium",
 	"keywords": [
@@ -41,9 +42,5 @@
 		"@sizium/node-server": "workspace:*",
 		"@sizium/repo-config": "workspace:*",
 		"sizium": "workspace:*"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org/"
 	}
 }

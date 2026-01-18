@@ -57,23 +57,23 @@
 		"test:transform-ws": "dovenv transform --silent"
 	},
 	"devDependencies": {
-		"@changesets/changelog-github": "0.5.1",
-		"@changesets/cli": "2.10.3",
-		"@dovenv/core": "1.6.1",
-		"@dovenv/theme-pigeonposse": "1.6.1",
-		"@playwright/test": "1.54.2",
-		"@types/node": "24.3.0",
-		"binarium": "2.1.1",
-		"eslint": "9.33.0",
+		"@changesets/changelog-github": "0.5.2",
+		"@changesets/cli": "2.29.8",
+		"@dovenv/core": "~1.6.1",
+		"@dovenv/theme-pigeonposse": "~1.6.1",
+		"@playwright/test": "1.57.0",
+		"@types/node": "25.0.9",
+		"binarium": "~2.1.2",
+		"eslint": "9.39.2",
 		"tslib": "2.8.1",
-		"tsx": "4.20.4",
-		"typescript": "5.9.2",
+		"tsx": "4.21.0",
+		"typescript": "5.9.3",
 		"unbuild": "3.6.1",
-		"vite": "7.1.2",
+		"vite": "7.3.1",
 		"vite-plugin-dts": "4.5.4",
-		"vitest": "3.2.4"
+		"vitest": "4.0.17"
 	},
-	"packageManager": "pnpm@10.14.0",
+	"packageManager": "pnpm@10.28.0",
 	"engines": {
 		"node": ">=20.0.0",
 		"pnpm": ">=8.10.0"

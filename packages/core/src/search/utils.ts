@@ -1,7 +1,7 @@
 
 import {
 	valid as versionValid,
-	maxSatisfying as versionMmxSatisfying,
+	maxSatisfying as versionMaxSatisfying,
 	rcompare as versionRCompare,
 	clean as versionClean,
 } from 'semver'
@@ -39,7 +39,7 @@ export const getVersion = ( version: string, availableVersions: string[] ) => {
 
 	let selectedVersion: string | undefined
 	if ( versionValid( version ) ) selectedVersion = version
-	else selectedVersion = versionMmxSatisfying( availableVersions, version ) || undefined
+	else selectedVersion = versionMaxSatisfying( availableVersions, version ) || undefined
 
 	return selectedVersion?.replace( /^v(?=\d)/, '' )
 

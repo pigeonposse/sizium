@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/web",
-	"version": "2.0.5",
+	"version": "2.0.6",
 	"private": true,
 	"description": "Get the actual size of any local or remote package",
 	"type": "module",
@@ -26,9 +26,9 @@
 		"@svaio/pwa": "0.0.11",
 		"@svaio/sitemap": "0.0.11",
 		"@svaio/unocss": "0.0.11",
-		"@sveltejs/adapter-cloudflare": "7.2.1",
-		"@sveltejs/kit": "2.32.0",
-		"svelte": "5.38.2",
-		"svelte-check": "4.3.1"
+		"@sveltejs/adapter-cloudflare": "7.2.5",
+		"@sveltejs/kit": "2.50.0",
+		"svelte": "5.46.4",
+		"svelte-check": "4.3.5"
 	}
 }

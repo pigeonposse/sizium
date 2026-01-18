@@ -1,6 +1,6 @@
 {
 	"name": "@sizium/core",
-	"version": "2.0.5",
+	"version": "2.0.6",
 	"description": "Get the actual size of any local or remote package",
 	"keywords": [
 		"package",
@@ -62,12 +62,12 @@
 		"test": "vitest run src"
 	},
 	"dependencies": {
-		"semver": "7.7.2"
+		"semver": "7.7.3"
 	},
 	"devDependencies": {
 		"@schemastore/package": "0.0.10",
 		"@sizium/repo-config": "workspace:*",
-		"@types/semver": "7.7.0"
+		"@types/semver": "7.7.1"
 	},
 	"publishConfig": {
 		"access": "public",

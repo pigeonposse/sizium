@@ -1,5 +1,15 @@
 # sizium
 
+## 2.0.6
+
+### Patch Changes
+
+- update deps
+
+- Updated dependencies []:
+  - @sizium/core@2.0.6
+  - @sizium/cli@2.0.6
+
 ## 2.0.5
 
 ### Patch Changes
